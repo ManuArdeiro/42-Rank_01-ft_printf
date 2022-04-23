@@ -6,18 +6,18 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/23 17:18:20 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/23 19:43:54 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 	/* ************************************************************************** */
 
 
-#include <libftprintf.h>
+#include "libftprintf.h"
 
-void	ft_var_print_nbr(int i, int *sol)
+void	ft_var_print_nbr(int j, int *sol)
 {
 }
 
-void	ft_var_print_unsigned(unsigned int i, int *sol)
+void	ft_var_print_unsigned(unsigned int j, int *sol)
 {
 }
 
