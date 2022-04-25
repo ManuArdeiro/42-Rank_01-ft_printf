@@ -30,17 +30,22 @@ static void	ft_var_set_flags(t_options *flags, char c, int *i)
 	if (c == '0')
 		flags->zero = 1;
 	if (c == '#')
+	{
 		flags->pad = 1;
+		if 
 	*i = *i +1;
 }
 
 static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 {
-	static t_options	*flags;
+	t_options	*flags;
 
 	flags = ft_printf_flags_init(flags);
 	if (!flags)
+	{
+		*sol = -1;
 	   	return ;
+	}
 	if (text[*i] == '%')
 		ft_printf_write_char(text[*i], 1);
 	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '.' ||
@@ -54,12 +59,12 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 		while (text[*i] >= '0' && text[*i] <= '9')
 			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
 	}
-	ft_var_print_main(text[*i], args, sol);
+	ft_var_print_main(text[*i], args, sol, flags);
 	*i = *i + 1;
 	return ;
 }
 
-int		ft_printf(char const *text, ...)
+int			ft_printf(char const *text, ...)
 {
 	int		*i;
 	int		*sol;
@@ -83,7 +88,7 @@ int		ft_printf(char const *text, ...)
 	return (*sol);
 }
 
-int	main(void)
+/*int			main(void)
 {
 	char			c = 'A';
 	char			*string = "En un lugar de La Mancha...";
@@ -107,4 +112,4 @@ int	main(void)
 	ft_printf("%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
 	ft_printf("%%f escribe un float: %f\n", numero);
 	return (0);
-}
+}*/

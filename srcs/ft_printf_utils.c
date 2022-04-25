@@ -36,3 +36,12 @@ t_options	*ft_printf_flags_init(t_options *flags)
 	return (flags);
 }
 
+int			ft_printf_strlen(char *str);
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+		i++;
+	return (i);
+}
