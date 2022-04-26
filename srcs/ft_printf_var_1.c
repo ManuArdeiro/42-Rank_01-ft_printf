@@ -25,12 +25,14 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 		ft_var_print_str_right(va_args(args, char *), sol, flags);
 	if (c == 'p')
 		ft_var_print_pointer(va_args(args, void *), sol, flags);
-	if ((c == 'd' || c == 'i') && flag->minus == 1)
+	if ((c == 'd' || c == 'i') && flags->minus == 1)
 		ft_var_print_nbr_left(va_args(args, int), sol, flags);
-	if ((c == 'd' || c == 'i') && flag->minus == 0)
+	if ((c == 'd' || c == 'i') && flags->minus == 0)
 		ft_var_print_nbr_right(va_args(args, int), sol, flags);
-	if (c == 'u')
-		ft_var_print_unsigned(va_args(args, unsigned int), sol,flags);
+	if (c == 'u' && flags->minus == 1)
+		ft_var_print_unsigned_left(va_args(args, unsigned int), sol,flags);
+	if (c == 'u' && flags->minus == 0)
+		ft_var_print_unsigned_right(va_args(args, unsigned int), sol,flags);
 	if (c == 'x' || c == 'X')
 		ft_var_print_hex(c, va_args(args, unsigned long int), sol, flags);
 	if (*sol = -1)

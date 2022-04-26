@@ -53,8 +53,8 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 		return ;
 	}
 	if (j > 0 && flags->plus == 0 && flags->space == 0)
-		flags->precision = flags->precision + 1;
-	k = flags->precision;
+		flags->precision = flags->precision - 1;
+	k = flags->precision + 1;
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
@@ -71,7 +71,12 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 	ft_printf_write_itoa(j, *sol, flags);
 }
 
-void	ft_var_print_unsigned(unsigned int j, int *sol, t_options *flags)
+void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
+{
+	
+}
+
+void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 {
 }
 
