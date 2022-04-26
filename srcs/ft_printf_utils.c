@@ -31,8 +31,8 @@ t_options	*ft_printf_flags_init(t_options *flags)
 	flags->zero = 0;
 	flags->pad = 0;
 	flags->space = 0;
-	flags->width = 0;
-	flags->precision = 0;
+	flags->width = -1;
+	flags->precision = -1;
 	return (flags);
 }
 
@@ -44,4 +44,42 @@ int			ft_printf_strlen(char *str);
 	while(str[i])
 		i++;
 	return (i);
+}
+
+int			ft_printf_itoa_len(int j)
+{
+	int	len;
+
+	while (j > 9)
+	{
+		j = j / 10;
+		len++;
+	}
+	return (len);
+}
+
+void		ft_printf_write_itoa(int j, int *sol, t_options *flags)
+{
+	int		len;
+	char	*str;
+
+	if (j<0)
+		j = j * -1;
+	len = ft_printf_itoa_len (j);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	str[len + 1] = '\0';
+	if (!str)
+	{
+		free (str);
+		*sol = -1;
+		return ;
+	}
+	while (j != 0)
+	{
+		str[len] = '0' + n % 10;
+		n = (n / 10);
+		len--;
+	}
+	while (str[len++])
+		*sol = *sol + ft_printf_write_char(str[len], 1);
 }

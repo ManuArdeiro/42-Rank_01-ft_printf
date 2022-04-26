@@ -42,7 +42,8 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 
 	flags = ft_printf_flags_init(flags);
 	if (!flags)
-	{
+	{:w
+
 		*sol = -1;
 	   	return ;
 	}
@@ -79,10 +80,14 @@ int			ft_printf(char const *text, ...)
 		{
 			*i = *i + 1;
 			ft_var_print(text, args, i, sol);
+			if (*sol = -1)
+				return (-1);
 		}
-		else
+		if (text[*i])
+		{
 			*sol = *sol + ft_printf_write_char(text[*i], 1);
-		*i = *i + 1;
+			*i = *i + 1;
+		}
 	}
 	va_end(args);
 	return (*sol);

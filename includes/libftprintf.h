@@ -34,6 +34,8 @@ int				ft_printf(const char *format, ...);
 int				ft_printf_write_char(char c, int fd);
 t_options		*ft_printf_flags_init(t_options *flags);
 int				ft_printf_strlen(char *str);
+int				ft_printf_itoa_len(int j);
+void			ft_var_print_itoa(int j, int *sol, t_options *flags);
 
 void			ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
 void			ft_var_print_str_left(char *str, int *sol, t_options *flags);
