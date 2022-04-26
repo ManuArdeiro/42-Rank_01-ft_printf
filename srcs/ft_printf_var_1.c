@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/23 20:55:48 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:05:58 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 	if ((c == 'd' || c == 'i') && flags->minus == 0)
 		ft_var_print_nbr_right(va_args(args, int), sol, flags);
 	if (c == 'u' && flags->minus == 1)
-		ft_var_print_unsigned_left(va_args(args, unsigned int), sol,flags);
+		ft_var_print_unsigned_left(va_args(args, unsigned int), sol, flags);
 	if (c == 'u' && flags->minus == 0)
-		ft_var_print_unsigned_right(va_args(args, unsigned int), sol,flags);
+		ft_var_print_unsigned_right(va_args(args, unsigned int), sol, flags);
 	if (c == 'x' || c == 'X')
 		ft_var_print_hex(c, va_args(args, unsigned long int), sol, flags);
-	if (*sol = -1)
+	if (*sol == -1)
 		return ;
 }
 
@@ -116,4 +116,3 @@ void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 		while (j < flags->width - len)
 			*sol = *sol + ft_printf_write_char('0', 1);
 }
-

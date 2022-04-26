@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:54:00 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/23 20:55:53 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/26 18:58:19 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static void	ft_var_set_flags(t_options *flags, char c, int *i)
 	if (c == '0')
 		flags->zero = 1;
 	if (c == '#')
-	{
 		flags->pad = 1;
-		if 
 	*i = *i +1;
 }
 
@@ -42,15 +40,14 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 
 	flags = ft_printf_flags_init(flags);
 	if (!flags)
-	{:w
-
+	{
 		*sol = -1;
-	   	return ;
+		return ;
 	}
 	if (text[*i] == '%')
 		ft_printf_write_char(text[*i], 1);
-	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '.' ||
-			text[*i] == '#' || text[*i] == ' ' || text[*i] == '+')
+	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '#'
+		|| text[*i] == ' ' || text[*i] == '+')
 		ft_var_set_flags(flags, text[*i], i);
 	while ((text[*i] >= '0' && text[*i] <= '9'))
 		flags->width = ft_var_set_length(flags->width, text[*i], i);
@@ -65,7 +62,7 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 	return ;
 }
 
-int			ft_printf(char const *text, ...)
+int	ft_printf(char const *text, ...)
 {
 	int		*i;
 	int		*sol;
@@ -80,7 +77,7 @@ int			ft_printf(char const *text, ...)
 		{
 			*i = *i + 1;
 			ft_var_print(text, args, i, sol);
-			if (*sol = -1)
+			if (*sol == -1)
 				return (-1);
 		}
 		if (text[*i])
