@@ -50,7 +50,7 @@ int	ft_printf_itoa_len(int j)
 {
 	int	len;
 
-	while (j > 9)
+	while (j > 0)
 	{
 		j = j / 10;
 		len++;
@@ -65,15 +65,15 @@ void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
 
 	if (j < 0)
 		j = j * -1;
-	len = ft_printf_itoa_len (j);
+	len = ft_printf_itoa_len(j);
 	str = (char *)malloc(sizeof(char) * len + 1);
-	str[len + 1] = '\0';
 	if (!str)
 	{
 		free (str);
 		*sol = -1;
 		return ;
 	}
+	str[len + 1] = '\0';
 	while (j != 0)
 	{
 		str[len] = '0' + n % 10;
