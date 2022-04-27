@@ -33,8 +33,10 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 		ft_var_print_unsigned_left(va_args(args, unsigned int), sol, flags);
 	if (c == 'u' && flags->minus == 0)
 		ft_var_print_unsigned_right(va_args(args, unsigned int), sol, flags);
-	if (c == 'x' || c == 'X')
-		ft_var_print_hex(c, va_args(args, unsigned long int), sol, flags);
+	if ((c == 'x' || c == 'X') && flags->minus == 1)
+		ft_var_print_hex_left(c, va_args(args, unsigned long int), sol, flags);
+	if ((c == 'x' || c == 'X') && flags->minus == 0)
+		ft_var_print_hex_right(c, va_args(args, unsigned long int), sol, flags);
 	if (*sol == -1)
 		return ;
 }
@@ -90,29 +92,10 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	}
 }
 
-void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
+void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol, t_options *flags)
 {
-	char	*str;
-	int		len;
-	int		j;
+}
 
-	str = *ptr;
-	len = ft_printf_strlen(str);
-	j = 0;
-	if (flags->width > len && flags->minus == 0 && flags->zero == 0)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char(' ', 1);
-	if (flags->width > len && flags->minus == 0 && flags->zero == 1)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char('0', 1);
-	j = 0;
-	if (flags->width <= len)
-		while (str[j])
-			*sol = *sol + ft_printf_write_char(str[j++], 1);
-	if (flags->width > len && flags->minus == 1 && flags->zero == 0)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char(' ', 1);
-	if (flags->width > len && flags->minus == 1 && flags->zero == 1)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char('0', 1);
+void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol, t_options *flags)
+{
 }
