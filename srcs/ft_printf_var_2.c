@@ -123,6 +123,29 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	ft_printf_write_itoa(j, *sol, flags);
 }
 
-void	ft_var_print_hex(char c, unsigned long int hex, int *sol, t_options *flags)
+void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 {
+	char	*str;
+	int	len;
+	int	j;
+
+	str = *ptr;
+	len = ft_printf_strlen(str);
+	j = 0;
+	if (flags->width > len && flags->minus == 0 && flags->zero == 0)
+		while (j < flags->width - len)
+			*sol = *sol + ft_printf_write_char(' ', 1);
+	if (flags->width > len && flags->minus == 0 && flags->zero == 1)
+		while (j < flags->width - len)
+			*sol = *sol + ft_printf_write_char('0', 1);
+	j = 0;
+	if (flags->width <= len)
+		while (str[j])
+			*sol = *sol + ft_printf_write_char(str[j++], 1);
+	if (flags->width > len && flags->minus == 1 && flags->zero == 0)
+		while (j < flags->width - len)
+			*sol = *sol + ft_printf_write_char(' ', 1);
+	if (flags->width > len && flags->minus == 1 && flags->zero == 1)
+		while (j < flags->width - len)
+			*sol = *sol + ft_printf_write_char('0', 1);
 }
