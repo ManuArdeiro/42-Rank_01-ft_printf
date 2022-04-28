@@ -34,7 +34,7 @@ void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	else if (j < 0)
 		*sol = *sol + ft_printf_write_char('-', 1);
-	ft_printf_write_itoa(j, *sol, flags);
+	ft_printf_write_itoa(j, sol);
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
@@ -67,7 +67,7 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	else if (j < 0)
 		*sol = *sol + ft_printf_write_char('-', 1);
-	ft_printf_write_itoa(j, *sol, flags);
+	ft_printf_write_itoa(j, sol);
 }
 
 void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
@@ -85,11 +85,11 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 	k = ft_printf_itoa_len(j);
 	while (k++ < flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1 && j > 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
+	else if (flags->space == 1 && j > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa(j, *sol, flags);
+	ft_printf_write_itoa(j, sol);
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
@@ -116,20 +116,20 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	k = ft_printf_itoa_len(j);
 	while (k++ < flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1 && j > 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
+	else if (flags->space == 1 && j > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa(j, *sol, flags);
+	ft_printf_write_itoa(j, sol);
 }
 
 void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 {
 	char	*str;
-	int	len;
-	int	j;
+	int		len;
+	int		j;
 
-	str = *ptr;
+	str = ptr;
 	len = ft_printf_strlen(str);
 	j = 0;
 	if (flags->width > len && flags->minus == 0 && flags->zero == 0)

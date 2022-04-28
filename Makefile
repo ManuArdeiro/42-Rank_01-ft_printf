@@ -13,7 +13,8 @@
 NAME 		= libftprintf.a
 
 SRCS 		= srcs/ft_printf.c \
-			srcs/ft_printf_utils.c \
+			srcs/ft_printf_utils_1.c \
+			srcs/ft_printf_utils_2.c \
 			srcs/ft_printf_var_1.c \
 			srcs/ft_printf_var_2.c
 
@@ -29,15 +30,15 @@ all: $(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "Creating library..."
-			ar -rcs $(NAME) $(OBJS) $(INC)
+			ar -rcs $(NAME) $(OBJS)
 
 clean:
 			@echo "\033[33mCleaning objects...\033[0m"
-			@/bin/rm -rf $(OBJ)
+			/bin/rm -rf $(OBJ)
 
 fclean: 	clean
 			@echo "\033[33mCleaning objects and library...\033[0m"
-			@/bin/rm -rf $(NAME)
+			/bin/rm -rf $(NAME)
 
 re: 		fclean all
 

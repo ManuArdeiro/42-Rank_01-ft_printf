@@ -38,6 +38,7 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 {
 	t_options	*flags;
 
+	flags = 0;
 	flags = ft_printf_flags_init(flags);
 	if (!flags)
 	{

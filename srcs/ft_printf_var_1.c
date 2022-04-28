@@ -16,27 +16,27 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 {
 	if (c == 'c')
 	{
-		ft_printf_write_char(va_args(args, char), 1);
+		ft_printf_write_char(va_arg(args, int), 1);
 		*sol = *sol + 1;
 	}
 	if (c == 's' && flags->minus == 1)
-		ft_var_print_str_left(va_args(args, char *), sol, flags);
+		ft_var_print_str_left(va_arg(args, char *), sol, flags);
 	if (c == 's' && flags->minus == 0)
-		ft_var_print_str_right(va_args(args, char *), sol, flags);
+		ft_var_print_str_right(va_arg(args, char *), sol, flags);
 	if (c == 'p')
-		ft_var_print_pointer(va_args(args, void *), sol, flags);
+		ft_var_print_pointer(va_arg(args, void *), sol, flags);
 	if ((c == 'd' || c == 'i') && flags->minus == 1)
-		ft_var_print_nbr_left(va_args(args, int), sol, flags);
+		ft_var_print_nbr_left(va_arg(args, int), sol, flags);
 	if ((c == 'd' || c == 'i') && flags->minus == 0)
-		ft_var_print_nbr_right(va_args(args, int), sol, flags);
+		ft_var_print_nbr_right(va_arg(args, int), sol, flags);
 	if (c == 'u' && flags->minus == 1)
-		ft_var_print_unsigned_left(va_args(args, unsigned int), sol, flags);
+		ft_var_print_unsigned_left(va_arg(args, unsigned int), sol, flags);
 	if (c == 'u' && flags->minus == 0)
-		ft_var_print_unsigned_right(va_args(args, unsigned int), sol, flags);
+		ft_var_print_unsigned_right(va_arg(args, unsigned int), sol, flags);
 	if ((c == 'x' || c == 'X') && flags->minus == 1)
-		ft_var_print_hex_left(c, va_args(args, unsigned long int), sol, flags);
+		ft_var_print_hex_left(c, va_arg(args, unsigned long int), sol, flags);
 	if ((c == 'x' || c == 'X') && flags->minus == 0)
-		ft_var_print_hex_right(c, va_args(args, unsigned long int), sol, flags);
+		ft_var_print_hex_right(c, va_arg(args, unsigned long int), sol, flags);
 	if (*sol == -1)
 		return ;
 }
@@ -105,11 +105,11 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol, t_options *f
 	k = ft_printf_itoa_len_hex(hex);
 	while (k++ < flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa_hex(c, hex, *sol, flags);
+	ft_printf_write_itoa_hex(c, hex, sol);
 	if (hex > 0 && flags->plus == 0 && flags->space == 0)
 		flags->precision = flags->precision - 1;
 	k = flags->precision + 1;
@@ -139,9 +139,9 @@ void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol, t_options *
 	k = ft_printf_itoa_len_hex(hex);
 	while (k++ < flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa_hex(c, hex, *sol, flags);
+	ft_printf_write_itoa_hex(c, hex, sol);
 }

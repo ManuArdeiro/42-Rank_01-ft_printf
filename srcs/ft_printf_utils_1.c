@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -58,7 +58,7 @@ int	ft_printf_itoa_len(int j)
 	return (len);
 }
 
-void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
+void	ft_printf_write_itoa(int j, int *sol)
 {
 	int		len;
 	char	*str;
@@ -76,8 +76,8 @@ void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
 	str[len + 1] = '\0';
 	while (j != 0)
 	{
-		str[len] = '0' + n % 10;
-		n = (n / 10);
+		str[len] = '0' + j % 10;
+		j = (j / 10);
 		len--;
 	}
 	while (str[len++])
