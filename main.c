@@ -1,3 +1,5 @@
+#include "libftprintf.h"
+
 int			main(void)
 {
 	char			c = 'A';
