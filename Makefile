@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/04/26 18:19:25 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/04/28 20:04:25 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,14 @@ all: $(NAME)
 $(NAME):	$(OBJS)
 			@echo "Creating library..."
 			ar -rcs $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) main.c
 
 clean:
-			@echo "\033[33mCleaning objects...\033[0m"
+			@echo "Cleaning objects..."
 			/bin/rm -rf $(OBJ)
 
 fclean: 	clean
-			@echo "\033[33mCleaning objects and library...\033[0m"
+			@echo "Cleaning objects and library..."
 			/bin/rm -rf $(NAME)
 
 re: 		fclean all

@@ -6,11 +6,11 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/26 19:11:34 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:54:51 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 {
@@ -45,6 +45,7 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 {
 	int		k;
 
+	k = 0;
 	if (j == 0 && flags->precision == 0)
 	{
 		while (k++ < flags->width)
@@ -74,6 +75,7 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 {
 	int		k;
 
+	k = 0;
 	if (j == 0 && flags->precision == 0)
 	{
 		while (k++ < flags->width)
@@ -100,6 +102,7 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 {
 	int	k;
 
+	k = 0;
 	if (j == 0 && flags->precision == 0)
 	{
 		while (k++ < flags->width)

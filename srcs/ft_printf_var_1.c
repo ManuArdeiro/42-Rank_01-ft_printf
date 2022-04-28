@@ -6,11 +6,11 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/26 19:05:58 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:55:03 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 {
@@ -92,10 +92,12 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	}
 }
 
-void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol, t_options *flags)
+void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
+	   t_options *flags)
 {
 	int	k;
 
+	k = 0;
 	if (hex == 0 && flags->precision == 0)
 	{
 		while (k++ < flags->width)
@@ -119,10 +121,12 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol, t_options *f
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol, t_options *flags)
+void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol,
+		t_options *flags)
 {
 	int	k;
 
+	k = 0;
 	if (hex == 0 && flags->precision == 0)
 	{
 		while (k++ < flags->width)
