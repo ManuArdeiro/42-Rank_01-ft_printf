@@ -91,7 +91,6 @@ int	ft_printf(char const *text, ...)
 		}
 		else if (text[i])
 		{
-			sol = sol + printf("%c", text[i]);
 			sol = sol + ft_printf_write_char(text[i], 1);
 			i = i + 1;
 		}
