@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/28 19:54:51 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/29 21:49:19 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,27 +128,24 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 
 void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 {
-	char	*str;
 	int		len;
 	int		j;
 
-	str = ptr;
-	len = ft_printf_strlen(str);
+	len = ft_printf_itoa_len_hex((unsigned long)ptr);
+	printf("ptr = %p len = %d", ptr, len);
 	j = 0;
 	if (flags->width > len && flags->minus == 0 && flags->zero == 0)
 		while (j < flags->width - len)
+		{
 			*sol = *sol + ft_printf_write_char(' ', 1);
+			j++;
+		}
 	if (flags->width > len && flags->minus == 0 && flags->zero == 1)
 		while (j < flags->width - len)
+		{
 			*sol = *sol + ft_printf_write_char('0', 1);
+			j++;
+		}
 	j = 0;
-	if (flags->width <= len)
-		while (str[j])
-			*sol = *sol + ft_printf_write_char(str[j++], 1);
-	if (flags->width > len && flags->minus == 1 && flags->zero == 0)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char(' ', 1);
-	if (flags->width > len && flags->minus == 1 && flags->zero == 1)
-		while (j < flags->width - len)
-			*sol = *sol + ft_printf_write_char('0', 1);
+	ft_printf_write_itoa_hex('x', (int)ptr, sol);
 }

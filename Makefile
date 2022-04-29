@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/04/28 20:04:25 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/04/29 18:38:25 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,38 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC)
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-			@echo "Creating library..."
+			@echo "$(GREEN)Creating library...$(WHITE)"
 			ar -rcs $(NAME) $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) main.c
+			@echo "$(DARK_GRAY)Done..."
 
 clean:
-			@echo "Cleaning objects..."
-			/bin/rm -rf $(OBJ)
+			@echo "$(LIGHT_RED)Cleaning objects...$(WHITE)"
+			/bin/rm -rf $(OBJS)
+			/bin/rm -rf a.out
 
 fclean: 	clean
-			@echo "Cleaning objects and library..."
+			@echo "$(YELLOW)Cleaning objects and library...$(WHITE)"
 			/bin/rm -rf $(NAME)
 
 re: 		fclean all
 
 .PHONY: 	all clean fclean re test
+
+# COLORS
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+MAGENTA		= \033[0;35m
+CYAN		= \033[0;36m
+LIGHT_GRAY	= \033[0;37m
+DARK_GRAY	= \033[0;90m
+LIGHT_RED	= \033[0;91m
+WHITE		= \033[0;97m
+
+#SETS
+BOLD		= \e[0;1m
+UNDERLINED	= \e[0;4m
+BLINK		= \e[0;5m
+

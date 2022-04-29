@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/28 21:25:46 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/29 21:34:34 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ void	ft_printf_write_itoa(int j, int *sol)
 	if (j < 0)
 		j = j * -1;
 	len = ft_printf_itoa_len(j);
-	str = (char *)malloc(sizeof(char) * len + 1);
+	str = (char *)malloc(sizeof(char) * len);
 	if (!str)
 	{
 		free (str);
 		*sol = -1;
 		return ;
 	}
-	str[len + 1] = '\0';
-	while (j != 0)
+	str[len] = '\0';
+	while (j > 0)
 	{
+		len--;
 		str[len] = '0' + j % 10;
 		j = (j / 10);
-		len--;
 	}
-	while (str[len++])
-		*sol = *sol + ft_printf_write_char(str[len], 1);
+	while (str[len])
+		*sol = *sol + ft_printf_write_char(str[len++], 1);
 }

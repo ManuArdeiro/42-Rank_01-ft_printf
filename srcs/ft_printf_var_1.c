@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/28 19:55:03 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/04/29 21:10:45 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 
 	j = 0;
 	len = ft_printf_strlen(str);
-	if (flags->precision < len)
+	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;
 	while (str[j] && j < len)
 	{
@@ -73,7 +73,7 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 
 	j = 0;
 	len = ft_printf_strlen(str);
-	if (flags->precision < len)
+	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;
 	if (flags->width > len)
 	{
@@ -87,7 +87,7 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	j = 0;
 	while (str[j] && j < len)
 	{
-		*sol = *sol + ft_printf_write_char(str[j++], 1);
+		*sol = *sol + ft_printf_write_char(str[j], 1);
 		j++;
 	}
 }
@@ -100,7 +100,7 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
 	k = 0;
 	if (hex == 0 && flags->precision == 0)
 	{
-		while (k++ < flags->width)
+		while (k++ < flags->width && flags->width != -1)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 		return ;
 	}
@@ -114,7 +114,8 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
 	ft_printf_write_itoa_hex(c, hex, sol);
 	if (hex > 0 && flags->plus == 0 && flags->space == 0)
 		flags->precision = flags->precision - 1;
-	k = flags->precision + 1;
+	if (flags->precision >= 0)
+		k = flags->precision + 1;
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
@@ -129,13 +130,14 @@ void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol,
 	k = 0;
 	if (hex == 0 && flags->precision == 0)
 	{
-		while (k++ < flags->width)
+		while (k++ < flags->width && flags->width != -1)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 		return ;
 	}
 	if (hex > 0 && flags->plus == 0 && flags->space == 0)
 		flags->precision = flags->precision - 1;
-	k = flags->precision + 1;
+	if (flags->precision >= 0)
+		k = flags->precision + 1;
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
