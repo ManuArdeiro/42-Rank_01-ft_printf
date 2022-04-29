@@ -34,6 +34,20 @@ static void	ft_var_set_flags(t_options *flags, char c, int *i)
 	*i = *i +1;
 }
 
+static void	ft_var_read_flags(char const *text, int *i, t_options *flags)
+{
+	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '#'
+		|| text[*i] == ' ' || text[*i] == '+')
+		ft_var_set_flags(flags, text[*i], i);
+	while ((text[*i] >= '0' && text[*i] <= '9'))
+		flags->width = ft_var_set_length(flags->width, text[*i], i);
+	if (text[*i] == '.')
+	{
+		*i = *i + 1;
+		while (text[*i] >= '0' && text[*i] <= '9')
+			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
+	}
+
 static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 {
 	t_options	*flags;
@@ -51,17 +65,7 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 		return ;
 	}
 	flags = ft_printf_flags_init(flags);
-	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '#'
-		|| text[*i] == ' ' || text[*i] == '+')
-		ft_var_set_flags(flags, text[*i], i);
-	while ((text[*i] >= '0' && text[*i] <= '9'))
-		flags->width = ft_var_set_length(flags->width, text[*i], i);
-	if (text[*i] == '.')
-	{
-		*i = *i + 1;
-		while (text[*i] >= '0' && text[*i] <= '9')
-			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
-	}
+	ft_var_read_flags(text, i, flags);
 	ft_var_print_main(text[*i], args, sol, flags);
 	*i = *i + 1;
 	return ;
