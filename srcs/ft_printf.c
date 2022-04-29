@@ -47,6 +47,7 @@ static void	ft_var_read_flags(char const *text, int *i, t_options *flags)
 		while (text[*i] >= '0' && text[*i] <= '9')
 			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
 	}
+}
 
 static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 {
@@ -62,11 +63,13 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 	if (!flags)
 	{
 		*sol = -1;
+		free(flags);
 		return ;
 	}
 	flags = ft_printf_flags_init(flags);
 	ft_var_read_flags(text, i, flags);
 	ft_var_print_main(text[*i], args, sol, flags);
+	free(flags);
 	*i = *i + 1;
 	return ;
 }
