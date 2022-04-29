@@ -38,6 +38,12 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 {
 	t_options	*flags;
 
+	if (text[*i] == '%')
+	{
+		ft_printf_write_char(text[*i], 1);
+		*i = *i + 1;
+		return ;
+	}
 	flags = malloc(sizeof(t_options) * 1);
 	if (!flags)
 	{
@@ -45,12 +51,6 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 		return ;
 	}
 	flags = ft_printf_flags_init(flags);
-	if (text[*i] == '%')
-	{
-		ft_printf_write_char(text[*i], 1);
-		*i = *i + 1;
-		return ;
-	}
 	while (text[*i] == '-' || text[*i] == '0' || text[*i] == '#'
 		|| text[*i] == ' ' || text[*i] == '+')
 		ft_var_set_flags(flags, text[*i], i);
