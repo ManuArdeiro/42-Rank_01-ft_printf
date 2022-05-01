@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/29 21:10:45 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 18:48:51 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 {
 	if (c == 'c')
-	{
-		ft_printf_write_char(va_arg(args, int), 1);
-		*sol = *sol + 1;
-	}
+		*sol = *sol + ft_printf_write_char(va_arg(args, int), 1);
 	if (c == 's' && flags->minus == 1)
 		ft_var_print_str_left(va_arg(args, char *), sol, flags);
 	if (c == 's' && flags->minus == 0)
@@ -37,6 +34,8 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 		ft_var_print_hex_left(c, va_arg(args, unsigned long int), sol, flags);
 	if ((c == 'x' || c == 'X') && flags->minus == 0)
 		ft_var_print_hex_right(c, va_arg(args, unsigned long int), sol, flags);
+	if (c == 'o')
+		ft_var_print_octal(va_arg(args, unsigned int), sol, flags);
 	if (*sol == -1)
 		return ;
 }

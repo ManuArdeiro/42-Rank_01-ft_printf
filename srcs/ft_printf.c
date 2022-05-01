@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:54:00 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/28 21:25:43 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 16:55:52 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 	{
 		ft_printf_write_char(text[*i], 1);
 		*i = *i + 1;
+		*sol = *sol + 1;
 		return ;
 	}
 	flags = malloc(sizeof(t_options) * 1);

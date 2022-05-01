@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/29 21:49:25 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 18:49:40 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(void)
 	void			*puntero = &c;
 	int				entero = -10;
 	int			intero = 10;
-	float			numero = 3.141592;
 	int			octal = 012345;
 	unsigned int	sin_signo = 12345;
 	int			hexadecimal = 0xabc23;
@@ -61,10 +60,6 @@ int	main(void)
 	i = ft_printf("\e[39m%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
 	printf("sol ft_printf = %d\n", i);
 	i = printf("\e[32m%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
-	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%f escribe un float: %f\n", numero);
-	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%f escribe un float: %f\n", numero);
 	printf("sol printf = %d\n", i);
 	return (0);
 }

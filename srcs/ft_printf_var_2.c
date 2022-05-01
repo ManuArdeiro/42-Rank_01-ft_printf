@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/29 21:49:19 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 17:13:07 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,7 @@ void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 	int		len;
 	int		j;
 
-	len = ft_printf_itoa_len_hex((unsigned long)ptr);
-	printf("ptr = %p len = %d", ptr, len);
+	len = ft_printf_itoa_len_hex((unsigned long int)ptr);
 	j = 0;
 	if (flags->width > len && flags->minus == 0 && flags->zero == 0)
 		while (j < flags->width - len)
@@ -147,5 +146,5 @@ void	ft_var_print_pointer(void *ptr, int *sol, t_options *flags)
 			j++;
 		}
 	j = 0;
-	ft_printf_write_itoa_hex('x', (int)ptr, sol);
+	ft_printf_write_itoa_hex('x', (unsigned long int)ptr, sol);
 }
