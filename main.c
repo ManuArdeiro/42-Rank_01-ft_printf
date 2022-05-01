@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 18:49:40 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:13:42 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(void)
 {
 	int				i;
 	char			c = 'A';
-	char			*string = "En un lugar de La Mancha...";
-	void			*puntero = &c;
+//	char			*string = "En un lugar de La Mancha...";
+	void			*puntero = 0;
 	int				entero = -10;
 	int			intero = 10;
 	int			octal = 012345;
@@ -25,41 +25,41 @@ int	main(void)
 	int			hexadecimal = 0xabc23;
 	int			HEXADECIMAL = 0XABC23;
 
-	i = ft_printf("\e[39m%%d escribe un número decimal: %d\n", entero);
+	i = ft_printf("%%d escribe un número decimal: %d\n", entero);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%d escribe un número decimal: %d\n", entero);
+	i = printf("%%d escribe un número decimal: %d\n", entero);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%c escribe un caracter: %c\n", c);
+	i = ft_printf("%%c escribe un caracter: %c\n", c);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%c escribe un caracter: %c\n", c);
+	i = printf("%%c escribe un caracter: %c\n", c);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%s escribe un string: %s\n", string);
+	i = ft_printf(" NULL  %s NULL \n", NULL);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%s escribe un string: %s\n", string);
+	i = printf(" NULL  %s NULL \n", NULL);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%p escribe un puntero: %p\n", puntero);
+	i = ft_printf("%%p escribe un puntero: %p\n", puntero);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%p escribe un puntero: %p\n", puntero);
+	i = printf("%%p escribe un puntero: %p\n", puntero);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%i escribe numeros enteros: %i\n", intero);
+	i = ft_printf("%%i escribe numeros enteros: %i\n", intero);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%i escribe numeros enteros: %i\n", intero);
+	i = printf("%%i escribe numeros enteros: %i\n", intero);
 	printf("sol printf = %d\n", i);
 	i = ft_printf("\e[39m%%o escribe numeros octales: %o\n", octal);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%o escribe numeros octales: %o\n", octal);
+	i = printf("%%o escribe numeros octales: %o\n", octal);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%u escribe un número sin signo: %u\n", sin_signo);
+	i = ft_printf("%%u escribe un número sin signo: %u\n", sin_signo);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%u escribe un número sin signo: %u\n", sin_signo);
+	i = printf("%%u escribe un número sin signo: %u\n", sin_signo);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
+	i = ft_printf("%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
+	i = printf("%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("\e[39m%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
+	i = ft_printf("%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("\e[32m%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
+	i = printf("%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
 	printf("sol printf = %d\n", i);
 	return (0);
 }

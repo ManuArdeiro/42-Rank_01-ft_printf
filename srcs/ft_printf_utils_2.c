@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 18:26:45 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:32:51 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf_itoa_len_hex(unsigned long int hex)
 {
-	int     len;
+	int	len;
 
 	len = 0;
 	while (hex > 0)
@@ -27,32 +27,24 @@ int	ft_printf_itoa_len_hex(unsigned long int hex)
 
 void	ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol)
 {
-	char	*hex_digits;
-	char	*HEX_digits;
+	char	*hex_digits_l;
+	char	*hex_digits_u;
 
-	hex_digits = "0123456789abcdef";
-	HEX_digits = "0123456789ABCDEF";
+	hex_digits_l = "0123456789abcdef";
+	hex_digits_u = "0123456789ABCDEF";
 	if (c == 'x')
-	{
-		*sol = *sol + ft_printf_write_char('0', 1);
-		*sol = *sol + ft_printf_write_char('x', 1);
-		ft_printf_write_hex(hex, sol, hex_digits);
-	}
+		ft_printf_write_hex_l(hex, sol, hex_digits_l);
 	if (c == 'X')
-	{
-		*sol = *sol + ft_printf_write_char('0', 1);
-		*sol = *sol + ft_printf_write_char('X', 1);
-		ft_printf_write_HEX(hex, sol, HEX_digits);
-	}
+		ft_printf_write_hex_u(hex, sol, hex_digits_u);
 }
 
-void	ft_printf_write_hex(unsigned long int hex, int *sol, char *digits)
+void	ft_printf_write_hex_l(unsigned long int hex_l, int *sol, char *digits)
 
 {
 	int		len;
 	char	*str;
 
-	len = ft_printf_itoa_len_hex(hex);
+	len = ft_printf_itoa_len_hex(hex_l);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)
 	{
@@ -62,24 +54,25 @@ void	ft_printf_write_hex(unsigned long int hex, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
-	while (hex != 0)
+	while (hex_l != 0)
 	{
-		str[len] = digits[hex % 16];
-		hex = (hex / 16);
+		str[len] = digits[hex_l % 16];
+		hex_l = (hex_l / 16);
 		len--;
 	}
 	len = 0;
 	while (str[len])
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
+	free(str);
 }
 
-void ft_printf_write_HEX(unsigned long int HEX, int *sol, char *digits)
+void	ft_printf_write_hex_u(unsigned long int hex_u, int *sol, char *digits)
 
 {
 	int		len;
 	char	*str;
 
-	len = ft_printf_itoa_len_hex(HEX);
+	len = ft_printf_itoa_len_hex(hex_u);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)
 	{
@@ -89,13 +82,14 @@ void ft_printf_write_HEX(unsigned long int HEX, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
-	while (HEX != 0)
+	while (hex_u != 0)
 	{
-		str[len] = digits[HEX % 16];
-		HEX = (HEX / 16);
+		str[len] = digits[hex_u % 16];
+		hex_u = (hex_u / 16);
 		len--;
 	}
 	len = 0;
 	while (str[len])
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
+	free(str);
 }

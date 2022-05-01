@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 18:48:51 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:32:15 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
+	if (!str)
+	{
+		write(1, "(NULL)", 6);
+		return ;
+	}
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;
@@ -71,6 +76,17 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
+	if (!str)
+	{
+		*sol = *sol + ft_printf_write_char('(', 1);
+		*sol = *sol + ft_printf_write_char('n', 1);
+		*sol = *sol + ft_printf_write_char('u', 1);
+		*sol = *sol + ft_printf_write_char('l', 1);
+		*sol = *sol + ft_printf_write_char('l', 1);
+		*sol = *sol + ft_printf_write_char(')', 1);
+		return ;
+	}
+	len = ft_printf_strlen(str);
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;
@@ -110,7 +126,7 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
 		*sol = *sol + ft_printf_write_char('+', 1);
 	else if (flags->space == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa_hex(c, hex, sol);
+	ft_printf_write_itoa_hex_l(c, hex, sol);
 	if (hex > 0 && flags->plus == 0 && flags->space == 0)
 		flags->precision = flags->precision - 1;
 	if (flags->precision >= 0)

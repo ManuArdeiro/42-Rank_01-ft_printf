@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 18:05:36 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 18:36:16 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 19:41:03 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ void    ft_printf_write_octal(unsigned int octal, int *sol)
 	len = 0;
 	while (str[len])
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
+	free(str);
 }

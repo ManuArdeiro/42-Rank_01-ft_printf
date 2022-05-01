@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/04/29 21:34:34 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/01 19:40:48 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void	ft_printf_write_itoa(int j, int *sol)
 	}
 	while (str[len])
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
+	free(str);
 }
