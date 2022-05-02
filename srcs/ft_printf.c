@@ -68,7 +68,6 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 		return ;
 	}
 	flags = ft_printf_flags_init(flags);
-	ft_var_read_flags(text, i, flags);
 	ft_var_print_main(text[*i], args, sol, flags);
 	free(flags);
 	*i = *i + 1;
