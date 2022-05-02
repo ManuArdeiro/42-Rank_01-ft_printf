@@ -12,15 +12,22 @@
 
 NAME 		= libftprintf.a
 
-SRCS 		= srcs/ft_printf.c \
-			srcs/ft_printf_utils_1.c \
+SRCS 		= srcs/ft_printf_utils_1.c \
 			srcs/ft_printf_utils_2.c \
 			srcs/ft_printf_utils_3.c \
 			srcs/ft_printf_var_1.c \
 			srcs/ft_printf_var_2.c \
 			srcs/ft_printf_var_3.c
 
+MAIN		= srcs/ft_printf.c
+
+BONUS		= srcs/ft_printf_bonus.c
+
 OBJS		= $(SRCS:.c=.o)
+
+MAIN_OBJS	= $(MAIN:.c=.o)
+
+BONUS_OBJS	= $(SRCS:.c=.o)
 
 INC 		= includes/
 
@@ -30,15 +37,26 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC)
 
 all: $(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS)$(MAIN_OBJS)
 			@echo "$(GREEN)Creating library...$(WHITE)"
-			ar -rcs $(NAME) $(OBJS)
+			ar -rcs $(NAME) $(OBJS) $(MAIN_OBJS)
 			$(CC) $(CFLAGS) $(OBJS) main.c
 			@echo "$(DARK_GRAY)Done..."
 
+bonus:		mclean
+			$(OBJS)$(BONUS_OBJS)
+			@echo "$(GREEN)Creating bonus library...$(WHITE)"
+			ar -rcs $(NAME) $(OBJS) &(BONUS_OBJS)
+			$(CC) $(CFLAGS) $(OBJS) main.c
+			@echo "$(DARK_GRAY)Done..."			
+
 clean:
 			@echo "$(LIGHT_RED)Cleaning objects...$(WHITE)"
-			/bin/rm -rf $(OBJS)
+			/bin/rm -rf $(OBJS) $(MAIN:OBJS) $(BONUS_OBJS)
+			/bin/rm -rf a.out
+
+mclean:		@echo "$(LIGHT_RED)Cleaning main printf...$(WHITE)"
+			/bin/rm -rf $(MAIN_OBJS)
 			/bin/rm -rf a.out
 
 fclean: 	clean
