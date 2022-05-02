@@ -65,7 +65,7 @@ fclean: 	clean
 
 re: 		fclean all
 
-.PHONY: 	all clean fclean re test
+.PHONY: 	all clean fclean re test mclean bonus
 
 # COLORS
 RED			= \033[0;31m
