@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/01 19:57:57 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/05/04 19:38:23 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,8 @@ NAME 		= libftprintf.a
 
 SRCS 		= srcs/ft_printf_utils_1.c \
 			srcs/ft_printf_utils_2.c \
-			srcs/ft_printf_utils_3.c \
 			srcs/ft_printf_var_1.c \
 			srcs/ft_printf_var_2.c \
-			srcs/ft_printf_var_3.c
 
 MAIN		= srcs/ft_printf.c
 
@@ -27,7 +25,7 @@ OBJS		= $(SRCS:.c=.o)
 
 MAIN_OBJS	= $(MAIN:.c=.o)
 
-BONUS_OBJS	= $(SRCS:.c=.o)
+BONUS_OBJS	= $(BONUS:.c=.o)
 
 INC 		= includes/
 
@@ -37,31 +35,42 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC)
 
 all: $(NAME)
 
-$(NAME):	$(OBJS)$(MAIN_OBJS)
-			@echo "$(GREEN)Creating library...$(WHITE)"
+$(NAME):	$(OBJS) $(MAIN_OBJS)
+			@echo "$(GREEN) Creating library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(MAIN_OBJS)
-			$(CC) $(CFLAGS) $(OBJS) main.c
-			@echo "$(DARK_GRAY)Done..."
-
+			
 bonus:		mclean
-			$(OBJS)$(BONUS_OBJS)
-			@echo "$(GREEN)Creating bonus library...$(WHITE)"
-			ar -rcs $(NAME) $(OBJS) &(BONUS_OBJS)
-			$(CC) $(CFLAGS) $(OBJS) main.c
-			@echo "$(DARK_GRAY)Done..."			
+			$(OBJS) $(BONUS_OBJS)
+			@echo "$(GREEN) Creating bonus library... $(WHITE)"
+			ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
+			@echo "$(DARK_GRAY) Done..."			
 
 clean:
-			@echo "$(LIGHT_RED)Cleaning objects...$(WHITE)"
+			@echo "$(LIGHT_RED) Cleaning objects... $(WHITE)"
 			/bin/rm -rf $(OBJS) $(MAIN:OBJS) $(BONUS_OBJS)
-			/bin/rm -rf a.out
 
-mclean:		@echo "$(LIGHT_RED)Cleaning main printf...$(WHITE)"
+mclean:		
+			@echo "$(LIGHT_RED) Cleaning main printf... $(WHITE)"
 			/bin/rm -rf $(MAIN_OBJS)
-			/bin/rm -rf a.out
 
-fclean: 	clean
-			@echo "$(YELLOW)Cleaning objects and library...$(WHITE)"
+fclean: 	clean mclean
+			@echo "$(YELLOW) Cleaning objects and library... $(WHITE)"
 			/bin/rm -rf $(NAME)
+
+test:		$(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) main.c
+			@echo "$(MAGENTA) Done..."
+			./a.out
+			make fclean
+			rm a.out
+
+bonus_test:	$(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
+			@echo "$(DARK_GRAY) Done..."
+			./a.out
+			make fclean
+			rm a.out
 
 re: 		fclean all
 

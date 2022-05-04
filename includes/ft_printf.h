@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 20:28:27 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:33:34 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,10 @@ void		ft_printf_write_itoa(int j, int *sol);
 // ft_printf_utils_2.c
 int			ft_printf_itoa_len_hex(unsigned long int hex);
 void		ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol);
-void		ft_printf_write_hex_l(unsigned long int hex_l, int *sol, char *digits);
-void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol, char *digits);
-
-//ft_printf_utils_3.c
-int			ft_printf_itoa_len_octal(unsigned int octal);
-void		ft_printf_write_octal(unsigned int octal, int *sol);
+void		ft_printf_write_hex_l(unsigned long int hex_l, int *sol,
+				char *digits);
+void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
+				char *digits);
 
 // ft_printf_var_1.c
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
@@ -66,12 +64,5 @@ void		ft_var_print_unsigned_left(unsigned int j, int *sol,
 void		ft_var_print_unsigned_right(unsigned int j, int *sol,
 				t_options *flags);
 void		ft_var_print_pointer(void *ptr, int *sol, t_options *flags);
-
-// ft_printf_var_3.c
-void		ft_var_print_octal(unsigned int octal, int *sol, t_options *flags);
-void		ft_var_print_octal_left(unsigned int octal, int *sol,
-				t_options *flags);
-void		ft_var_print_octal_right(unsigned int octal, int *sol,
-				t_options *flags);
 
 #endif

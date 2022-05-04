@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 20:32:15 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:32:43 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 		ft_var_print_hex_left(c, va_arg(args, unsigned long int), sol, flags);
 	if ((c == 'x' || c == 'X') && flags->minus == 0)
 		ft_var_print_hex_right(c, va_arg(args, unsigned long int), sol, flags);
-	if (c == 'o')
-		ft_var_print_octal(va_arg(args, unsigned int), sol, flags);
 	if (*sol == -1)
 		return ;
 }
@@ -126,7 +124,7 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
 		*sol = *sol + ft_printf_write_char('+', 1);
 	else if (flags->space == 1 && hex > 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	ft_printf_write_itoa_hex_l(c, hex, sol);
+	ft_printf_write_itoa_hex(c, hex, sol);
 	if (hex > 0 && flags->plus == 0 && flags->space == 0)
 		flags->precision = flags->precision - 1;
 	if (flags->precision >= 0)
