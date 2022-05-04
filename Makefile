@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/04 19:38:23 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/05/04 21:03:16 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME 		= libftprintf.a
 
 SRCS 		= srcs/ft_printf_utils_1.c \
 			srcs/ft_printf_utils_2.c \
+			srcs/ft_printf_utils_3.c \
 			srcs/ft_printf_var_1.c \
 			srcs/ft_printf_var_2.c \
 

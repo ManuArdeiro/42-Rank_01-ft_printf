@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 19:34:25 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/04 21:09:14 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	main(void)
 {
 	int				i;
 	char			c = 'A';
-//	char			*string = "En un lugar de La Mancha...";
-	void			*puntero = 0;
-	int				entero = -10;
-	int			intero = 10;
-	unsigned int	sin_signo = 12345;
+	char			*string = "En un lugar de La Mancha...";
+	void			*puntero = &c;
+	int				entero = -2147483648;
+	int				intero = -2147483648;
+	unsigned int	sin_signo = -125;
 	int			hexadecimal = 0xabc23;
 	int			HEXADECIMAL = 0XABC23;
 
@@ -31,6 +31,10 @@ int	main(void)
 	i = ft_printf("%%c escribe un caracter: %c\n", c);
 	printf("sol ft_printf = %d\n", i);
 	i = printf("%%c escribe un caracter: %c\n", c);
+	printf("sol ft_printf = %d\n", i);
+	i = ft_printf("%%s escribe una cadena: %s\n", string);
+	printf("sol ft_printf = %d\n", i);
+	i = printf("%%s escribe una cadena: %s\n", string);
 	printf("sol printf = %d\n", i);
 	i = ft_printf(" NULL  %s NULL \n", NULL);
 	printf("sol ft_printf = %d\n", i);

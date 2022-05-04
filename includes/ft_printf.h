@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 19:33:34 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:57:32 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void		ft_printf_write_hex_l(unsigned long int hex_l, int *sol,
 				char *digits);
 void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
 				char *digits);
+
+//ft_printf_utils_3.c
+int 		ft_sign_change(int j, int *sol);
 
 // ft_printf_var_1.c
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
