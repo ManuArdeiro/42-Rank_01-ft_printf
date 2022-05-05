@@ -49,6 +49,8 @@ void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
 
 //ft_printf_utils_3.c
 int 		ft_sign_change(int j, int *sol);
+int		ft_printf_itoa_unsigned_len(unsigned int j)
+void		ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
 
 // ft_printf_var_1.c
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
