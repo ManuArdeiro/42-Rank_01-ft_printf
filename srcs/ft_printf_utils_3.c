@@ -23,3 +23,50 @@ int	ft_sign_change(int j, int *sol)
 		j = j * -1;
 	return (j);
 }
+
+int	ft_printf_itoa_unsigned_len(unsigned int j)
+{
+	int	len;
+
+	if (j == 0)
+		return (1);
+	if (j == -2147483648)
+		return (10);
+	else if (j < 0)
+		j = j * -1;
+	len = 0;
+	while (j > 0)
+	{
+		j = j / 10;
+		len++;
+	}
+	return (len);
+}
+
+void	ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
+{
+	int		len;
+	char	*str;
+
+	if (j == 0)
+		*sol = *sol + ft_printf_write_char('0', 1);
+	if (j < 0)
+		j = ft_sign_change(j, sol);
+	len = ft_printf_itoa_len(j);
+	str = (char *)malloc(sizeof(char) * len);
+	if (!str)
+	{
+		free (str);
+		*sol = -1;
+		return ;
+	}
+	str[len] = '\0';
+	while (j > 0)
+	{
+		str[--len] = '0' + j % 10;
+		j = (j / 10);
+	}
+	while (str[len])
+		*sol = *sol + ft_printf_write_char(str[len++], 1);
+	free(str);
+}
