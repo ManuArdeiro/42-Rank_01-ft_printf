@@ -6,11 +6,11 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 21:09:14 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:06:09 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libftprintf.h"
+#include "includes/ft_printf.h"
 
 int	main(void)
 {
@@ -21,8 +21,8 @@ int	main(void)
 	int				entero = -2147483648;
 	int				intero = -2147483648;
 	unsigned int	sin_signo = -125;
-	int			hexadecimal = 0xabc23;
-	int			HEXADECIMAL = 0XABC23;
+//	int				hexadecimal = 0;
+//	int				HEXADECIMAL = 0;
 
 	i = ft_printf("%%d escribe un número decimal: %d\n", entero);
 	printf("sol ft_printf = %d\n", i);
@@ -52,13 +52,13 @@ int	main(void)
 	printf("sol ft_printf = %d\n", i);
 	i = printf("%%u escribe un número sin signo: %u\n", sin_signo);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
+	i = ft_printf("%%x escribe hexadecimales en minusculas: %lx\n", LONG_MAX);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%x escribe hexadecimales en minusculas: %x\n", hexadecimal);
+	i = printf("%%x escribe hexadecimales en minusculas: %lx\n", LONG_MAX);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
+	i = ft_printf("%%X escribe hexadecimales en mayusculas: %lX\n", LONG_MIN);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%X escribe hexadecimales en mayusculas: %X\n", HEXADECIMAL);
+	i = printf("%%X escribe hexadecimales en mayusculas: %lX\n", LONG_MIN);
 	printf("sol printf = %d\n", i);
 	return (0);
 }

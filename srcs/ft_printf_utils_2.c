@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/01 20:32:51 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:24:06 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_printf_itoa_len_hex(unsigned long int hex)
 {
 	int	len;
 
+	if (hex == 0)
+		return (0);
 	len = 0;
 	while (hex > 0)
 	{
@@ -54,6 +56,8 @@ void	ft_printf_write_hex_l(unsigned long int hex_l, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
+	if (len < 0)
+		*sol = *sol + ft_printf_write_char('0', 1);
 	while (hex_l != 0)
 	{
 		str[len] = digits[hex_l % 16];
@@ -82,6 +86,8 @@ void	ft_printf_write_hex_u(unsigned long int hex_u, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
+	if (len < 0)
+		*sol = *sol + ft_printf_write_char('0', 1);
 	while (hex_u != 0)
 	{
 		str[len] = digits[hex_u % 16];

@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 21:08:01 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:23:53 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_hex_right(char c, unsigned long int hex, int *sol,
+void	ft_var_print_hex_right(char c, unsigned int long hex, int *sol,
 		t_options *flags)
 {
 	int	k;

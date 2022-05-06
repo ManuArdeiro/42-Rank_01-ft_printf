@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 20:57:32 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/06 19:19:41 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_options
 {
@@ -49,8 +50,8 @@ void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
 
 //ft_printf_utils_3.c
 int 		ft_sign_change(int j, int *sol);
-int		ft_printf_itoa_unsigned_len(unsigned int j)
-void		ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
+int			ft_printf_itoa_unsigned_len(unsigned int j);
+void		ft_printf_write_itoa_unsigned(unsigned int j, int *sol);
 
 // ft_printf_var_1.c
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
