@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/04 21:03:16 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/05/08 18:32:28 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS 		= srcs/ft_printf_utils_1.c \
 			srcs/ft_printf_utils_3.c \
 			srcs/ft_printf_var_1.c \
 			srcs/ft_printf_var_2.c \
+			srcs/ft_printf_var_3.c \
 
 MAIN		= srcs/ft_printf.c
 
@@ -37,15 +38,14 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC)
 all: $(NAME)
 
 $(NAME):	$(OBJS) $(MAIN_OBJS)
-			@echo "$(GREEN) Creating library... $(WHITE)"
+			@echo "$(YELLOW) Creating library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(MAIN_OBJS)
 			
-bonus:		mclean
-			$(OBJS) $(BONUS_OBJS)
-			@echo "$(GREEN) Creating bonus library... $(WHITE)"
+bonus:		fclean $(OBJS) $(BONUS_OBJS)
+			@echo "$(YELLOW) Creating bonus library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
-			@echo "$(DARK_GRAY) Done..."			
+			@echo "$(GREEN) Done..."			
 
 clean:
 			@echo "$(LIGHT_RED) Cleaning objects... $(WHITE)"
@@ -56,7 +56,7 @@ mclean:
 			/bin/rm -rf $(MAIN_OBJS)
 
 fclean: 	clean mclean
-			@echo "$(YELLOW) Cleaning objects and library... $(WHITE)"
+			@echo "$(LIGHT_RED) Cleaning objects and library... $(WHITE)"
 			/bin/rm -rf $(NAME)
 
 test:		$(NAME)
@@ -66,7 +66,7 @@ test:		$(NAME)
 			make fclean
 			rm a.out
 
-bonus_test:	$(NAME)
+bonus_test:	bonus
 			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
 			@echo "$(DARK_GRAY) Done..."
 			./a.out

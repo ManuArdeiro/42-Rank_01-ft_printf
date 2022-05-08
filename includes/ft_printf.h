@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/06 19:19:41 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/08 17:17:31 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void		ft_printf_write_itoa_unsigned(unsigned int j, int *sol);
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
 void		ft_var_print_str_left(char *str, int *sol, t_options *flags);
 void		ft_var_print_str_right(char *str, int *sol, t_options *flags);
-void		ft_var_print_hex_left(char c, unsigned long int hex, int *sol,
+void		ft_var_print_hex_left(char c, unsigned int hex, int *sol,
 				t_options *flags);
-void		ft_var_print_hex_right(char c, unsigned long int hex, int *sol,
+void		ft_var_print_hex_right(char c, unsigned int hex, int *sol,
 				t_options *flags);
 
 // ft_printf_var_2.c
@@ -70,5 +70,10 @@ void		ft_var_print_unsigned_left(unsigned int j, int *sol,
 void		ft_var_print_unsigned_right(unsigned int j, int *sol,
 				t_options *flags);
 void		ft_var_print_pointer(void *ptr, int *sol, t_options *flags);
+
+// ft_printf_var_3.c
+void		ft_var_print_chr_left(int c, int *sol, t_options *flags);
+void		ft_var_print_chr_right(int c, int *sol, t_options *flags);
+
 
 #endif
