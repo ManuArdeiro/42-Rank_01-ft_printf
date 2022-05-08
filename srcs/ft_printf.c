@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:54:00 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/04 17:47:33 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:37:05 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	ft_var_print(char const *text, va_list args, int *i, int *sol)
 	if (!flags)
 	{
 		*sol = -1;
-		free(flags);
 		return ;
 	}
 	flags = ft_printf_flags_init(flags);
