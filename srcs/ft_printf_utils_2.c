@@ -12,20 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf_itoa_len_hex(unsigned long int hex)
-{
-	int	len;
-
-	if (hex == 0)
-		return (0);
-	len = 0;
-	while (hex > 0)
-	{
-		hex = hex / 16;
-		len++;
-	}
-	return (len);
-}
 
 void	ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol)
 {
