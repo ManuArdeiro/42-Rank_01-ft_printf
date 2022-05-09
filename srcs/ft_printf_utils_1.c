@@ -12,12 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf_write_char(char c, int fd)
-{
-	write(fd, &c, 1);
-	return (1);
-}
-
 t_options	*ft_printf_flags_init(t_options *flags)
 {
 	flags->minus = 0;
