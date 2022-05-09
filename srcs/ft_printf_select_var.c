@@ -39,3 +39,9 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 	if (*sol == -1)
 		return ;
 }
+
+int	ft_printf_write_char(char c, int fd)
+{
+	write(fd, &c, 1);
+	return (1);
+}
