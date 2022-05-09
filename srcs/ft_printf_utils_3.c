@@ -24,21 +24,6 @@ int	ft_sign_change(int j, int *sol)
 	return (j);
 }
 
-int	ft_printf_itoa_unsigned_len(unsigned int j)
-{
-	int	len;
-
-	len = 0;
-	if (j == 0)
-		return (1);
-	while (j > 0)
-	{
-		j = j / 10;
-		len++;
-	}
-	return (len);
-}
-
 void	ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
 {
 	int		len;
