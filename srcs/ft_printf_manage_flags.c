@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:14:00 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 18:37:05 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:58:11 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void	ft_var_read_flags(char const *text, int *i, t_options *flags)
 		while (text[*i] >= '0' && text[*i] <= '9')
 			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
 	}
+	else if (text[*i] != '.')
+		flags->precision = -1;
 }

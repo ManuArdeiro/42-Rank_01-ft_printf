@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 17:17:31 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:17:14 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int			ft_printf(const char *format, ...);
 // ft_printf_manage_flags.c
 
 int			ft_var_set_length(int length, char c, int *i);
-void			ft_var_set_flags(t_options *flags, char c, int *i);
-void			ft_var_read_flags(char const *text, int *i, t_options *flags);
+void		ft_var_set_flags(t_options *flags, char c, int *i);
+void		ft_var_read_flags(char const *text, int *i, t_options *flags);
 
 // ft_printf_select_var.c
 
 void		ft_var_print_main(char c, va_list args, int *sol, t_options *flags);
-int		ft_printf_write_char(char c, int fd);
+int			ft_printf_write_char(char c, int fd);
 
 // ft_printf_numbers.c
 
@@ -55,8 +55,8 @@ void		ft_var_print_unsigned_right(unsigned int j, int *sol,
 
 // ft_printf_chars.c
 
-void	ft_var_print_chr_right(int c, int *sol, t_options *flags)
-void	ft_var_print_chr_left(int c, int *sol, t_options *flags)
+void		ft_var_print_chr_right(int c, int *sol, t_options *flags);
+void		ft_var_print_chr_left(int c, int *sol, t_options *flags);
 
 //ft_printf_strings.c
 	
@@ -76,9 +76,9 @@ void		ft_var_print_hex_right(char c, unsigned int hex, int *sol,
 
 // ft_printf_utils_len.c
 int			ft_printf_strlen(char *str);
-int			ft_printf_strlen(char *str);
+int 		ft_printf_itoa_len(int j);
+int			ft_printf_itoa_len_hex(unsigned long int hex);
 int			ft_printf_itoa_unsigned_len(unsigned int j);
-int			ft_printf_itoa_len(int j);
 
 // ft_printf_utils_write_hex.c
 void		ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol);
@@ -89,14 +89,15 @@ void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
 
 // ft_printf_utils_write_itoa.c
 
-void		ft_printf_write_itoa(int j, int *sol);
-void		ft_printf_write_itoa_unsigned(unsigned int j, int *sol);
-
+void		ft_printf_write_itoa(int j, int *sol, t_options *flags);
+void    	ft_printf_write_itoa_no_sign(unsigned int j, int *sol, 
+				t_options *flags);
+		
 // ft_printf_utils_flags_init.c
 t_options	*ft_printf_flags_init(t_options *flags);
 
 
-//ft_printf_utils_sign_change.c
+// ft_printf_utils_sign_change.c
 int 		ft_sign_change(int j, int *sol);
 
 

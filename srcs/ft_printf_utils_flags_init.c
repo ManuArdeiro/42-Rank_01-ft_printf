@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 16:24:59 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:09:54 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_options	*ft_printf_flags_init(t_options *flags)
 	flags->pad = 0;
 	flags->space = 0;
 	flags->width = 0;
-	flags->precision = -1;
+	flags->precision = 0;
 	return (flags);
 }

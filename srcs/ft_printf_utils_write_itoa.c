@@ -6,13 +6,13 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:21:47 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 16:24:59 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:23:55 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_printf_write_itoa(int j, int *sol)
+void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
 {
 	int		len;
 	char	*str;
@@ -35,12 +35,12 @@ void	ft_printf_write_itoa(int j, int *sol)
 		str[--len] = '0' + j % 10;
 		j = (j / 10);
 	}
-	while (str[len])
+	while (str[len] && len <= flags->precision)
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
 	free(str);
 }
 
-void	ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
+void	ft_printf_write_itoa_no_sign(unsigned int j, int *sol, t_options *flags)
 {
 	int		len;
 	char	*str;
@@ -61,7 +61,7 @@ void	ft_printf_write_itoa_unsigned(unsigned int j, int *sol)
 		str[--len] = '0' + j % 10;
 		j = (j / 10);
 	}
-	while (str[len])
+	while (str[len] && len <= flags->precision)
 		*sol = *sol + ft_printf_write_char(str[len++], 1);
 	free(str);
 }

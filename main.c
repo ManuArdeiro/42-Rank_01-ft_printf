@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 18:59:26 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:58:04 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	main(void)
 //	printf("sol ft_printf = %d\n", i);
 //	i = printf("%%d escribe un número decimal: %d\n", entero);
 //	printf("sol printf = %d\n", i);
-	i = ft_printf(" %-11p %-12p ", (void *)INT_MIN, (void *)INT_MAX);
+	i = ft_printf(" %d ", 1);
 	printf("sol ft_printf = %d\n", i);
-	i = printf(" %-11p %-12p ", (void *)INT_MIN, (void *)INT_MAX);
-	printf("sol ft_printf = %d\n", i);
+	i = printf(" %d ", 1);
+	printf("sol printf = %d\n", i);
 //	i = ft_printf("%%s escribe una cadena: %s\n", string);
 //	printf("sol ft_printf = %d\n", i);
 //	i = printf("%%s escribe una cadena: %s\n", string);

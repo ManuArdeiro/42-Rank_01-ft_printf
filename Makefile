@@ -6,18 +6,24 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/08 18:32:28 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/05/10 18:05:25 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= libftprintf.a
 
-SRCS 		= srcs/ft_printf_utils_1.c \
-			srcs/ft_printf_utils_2.c \
-			srcs/ft_printf_utils_3.c \
-			srcs/ft_printf_var_1.c \
-			srcs/ft_printf_var_2.c \
-			srcs/ft_printf_var_3.c \
+SRCS 		= srcs/ft_printf_manage_flags.c \
+			srcs/ft_printf_select_var.c \
+			srcs/ft_printf_numbers.c \
+			srcs/ft_printf_chars.c \
+			srcs/ft_printf_strings.c \
+		   	srcs/ft_printf_pointer.c \
+			srcs/ft_printf_hex.c \
+			srcs/ft_printf_utils_len.c \
+			srcs/ft_printf_utils_write_hex.c \
+			srcs/ft_printf_utils_write_itoa.c \
+			srcs/ft_printf_utils_flags_init.c \
+			srcs/ft_printf_utils_sign_change.c
 
 MAIN		= srcs/ft_printf.c
 

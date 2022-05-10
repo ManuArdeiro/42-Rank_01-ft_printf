@@ -6,11 +6,26 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/08 18:59:22 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:58:14 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+static void ft_write_null(int *sol, t_options *flags)
+{
+	int		i;
+	char	*null;
+	
+	i = 1;
+	null = "(null)";
+	printf("%d\n", flags->precision);
+	while (i <= flags->precision)
+	{
+		*sol = *sol + ft_printf_write_char(null[i - 1], 1);
+		i++;
+	}
+}
 
 void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 {
@@ -18,11 +33,9 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
+	printf("%d\n", flags->precision);
 	if (!str)
-	{
-		write(1, "(NULL)", 6);
-		return ;
-	}
+		ft_write_null(sol, flags);
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;
@@ -48,17 +61,9 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
+	printf("%d\n", flags->precision);
 	if (!str)
-	{
-		// si es null es como str="(null)"
-		*sol = *sol + ft_printf_write_char('(', 1);
-		*sol = *sol + ft_printf_write_char('n', 1);
-		*sol = *sol + ft_printf_write_char('u', 1);
-		*sol = *sol + ft_printf_write_char('l', 1);
-		*sol = *sol + ft_printf_write_char('l', 1);
-		*sol = *sol + ft_printf_write_char(')', 1);
-		return ;
-	}
+		ft_write_null(sol, flags);
 	len = ft_printf_strlen(str);
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->precision != -1)
