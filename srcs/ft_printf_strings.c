@@ -19,11 +19,21 @@ static void ft_write_null(int *sol, t_options *flags)
 	
 	i = 1;
 	null = "(null)";
-	printf("%d\n", flags->precision);
-	while (i <= flags->precision)
+	if (flags->point == 1)
 	{
-		*sol = *sol + ft_printf_write_char(null[i - 1], 1);
-		i++;
+		while (i <= flags->precision)
+		{
+			*sol = *sol + ft_printf_write_char(null[i - 1], 1);
+			i++;
+		}
+	}
+	else
+	{
+		while (i <= flags->precision)
+		{
+			*sol = *sol + ft_printf_write_char(null[i - 1], 1);
+			i++;
+		}
 	}
 }
 
@@ -33,13 +43,12 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
-	printf("%d\n", flags->precision);
 	if (!str)
 		ft_write_null(sol, flags);
 	len = ft_printf_strlen(str);
-	if (flags->precision < len && flags->precision != -1)
+	if (flags->precision < len && flags->point == 1)
 		len = flags->precision;
-	while (str[j] && j < len)
+	while (j < len)
 	{
 		*sol = *sol + ft_printf_write_char(str[j], 1);
 		j++;
@@ -61,12 +70,10 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 	int	j;
 
 	j = 0;
-	printf("%d\n", flags->precision);
 	if (!str)
 		ft_write_null(sol, flags);
 	len = ft_printf_strlen(str);
-	len = ft_printf_strlen(str);
-	if (flags->precision < len && flags->precision != -1)
+	if (flags->precision < len && flags->point == 1)
 		len = flags->precision;
 	if (flags->width > len)
 	{
@@ -78,7 +85,7 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 				*sol = *sol + ft_printf_write_char('0', 1);
 	}
 	j = 0;
-	while (str[j] && j < len)
+	while (j < len)
 	{
 		*sol = *sol + ft_printf_write_char(str[j], 1);
 		j++;
