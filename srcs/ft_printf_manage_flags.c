@@ -43,6 +43,7 @@ void	ft_var_read_flags(char const *text, int *i, t_options *flags)
 		flags->width = ft_var_set_length(flags->width, text[*i], i);
 	if (text[*i] == '.')
 	{
+		flags->point = 1;
 		*i = *i + 1;
 		while (text[*i] >= '0' && text[*i] <= '9')
 			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
