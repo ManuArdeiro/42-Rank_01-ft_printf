@@ -6,7 +6,7 @@
 /*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:39:25 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/10 20:58:04 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:52:24 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	int				i;
 //	char			c = 'A';
-//	char			*string = "En un lugar de La Mancha...";
+	char			*string = "En un lugar de La Mancha...";
 //	void			*puntero = &c;
 //	int				entero = -2147483648;
 //	int				intero = -2147483648;
@@ -28,22 +28,28 @@ int	main(void)
 //	printf("sol ft_printf = %d\n", i);
 //	i = printf("%%d escribe un número decimal: %d\n", entero);
 //	printf("sol printf = %d\n", i);
-	i = ft_printf(" %d ", 1);
-	printf("sol ft_printf = %d\n", i);
-	i = printf(" %d ", 1);
-	printf("sol printf = %d\n", i);
+//	i = ft_printf(" %d ", 1);
+//	printf("sol ft_printf = %d\n", i);
+//	i = printf(" %d ", 1);
+//	printf("sol printf = %d\n", i);
 //	i = ft_printf("%%s escribe una cadena: %s\n", string);
 //	printf("sol ft_printf = %d\n", i);
 //	i = printf("%%s escribe una cadena: %s\n", string);
 //	printf("sol printf = %d\n", i);
-	i = ft_printf(" NULL  %s NULL \n", NULL);
+	printf("sol printf = %d\n", i);
+	i = printf(" NULL  %s NULL \n", string);
+	i = ft_printf("ft_printf: NULL  %s NULL \n", NULL);
 	printf("sol ft_printf = %d\n", i);
-	i = printf(" NULL  %s NULL \n", NULL);
+	i = printf("printf: NULL  %s NULL \n", NULL);
 	printf("sol printf = %d\n", i);
 	i = ft_printf(" NULL  %.3s NULL \n", NULL);
 	printf("sol ft_printf = %d\n", i);
 	i = printf(" NULL  %.3s NULL \n", NULL);
 	printf("sol printf = %d\n", i);
+	i = printf(" NULL  %s NULL \n", string);
+	printf("sol printf = %d\n", i);
+	i = ft_printf(" NULL  %s NULL \n", string);
+	printf("sol ft_printf = %d\n", i);
 //	i = ft_printf("%%p escribe un puntero: %p\n", puntero);
 //	printf("sol ft_printf = %d\n", i);
 //	i = printf("%%p escribe un puntero: %p\n", puntero);
