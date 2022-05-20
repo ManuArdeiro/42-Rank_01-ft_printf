@@ -16,7 +16,7 @@ void	ft_var_print_chr_left(int c, int *sol, t_options *flags)
 {
 	int	j;
 
-	if (flags->precision != 0)
+	if (flags->point == 0)
 		*sol = *sol + ft_printf_write_char(c, 1);
 	j = 1;
 	while (j < flags->width)
@@ -46,6 +46,6 @@ void	ft_var_print_chr_right(int c, int *sol, t_options *flags)
 				*sol = *sol + ft_printf_write_char('0', 1);
 		j++;
 	}
-	if (flags->precision != 0)
+	if (flags->point == 0)
 		*sol = *sol + ft_printf_write_char(c, 1);
 }
