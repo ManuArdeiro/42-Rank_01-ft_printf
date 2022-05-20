@@ -22,6 +22,7 @@
 typedef struct s_options
 {
 	int	width;
+	int	point;
 	int	precision;
 	int	zero;
 	int	minus;
