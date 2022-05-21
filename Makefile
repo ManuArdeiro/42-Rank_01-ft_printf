@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/10 18:05:25 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/05/21 19:49:42 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ INC 		= includes/
 
 CC = 		gcc
 
-CFLAGS = 	-Wall -Werror -Wextra -I$(INC)
+CFLAGS = 	-Wall -Werror -Wextra -I$(INC) -g3
 
 all: $(NAME)
 
@@ -69,15 +69,15 @@ test:		$(NAME)
 			$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) main.c
 			@echo "$(MAGENTA) Done..."
 			./a.out
-			make fclean
-			rm a.out
+#			make fclean
+#			rm a.out
 
 bonus_test:	bonus
 			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
 			@echo "$(DARK_GRAY) Done..."
 			./a.out
-			make fclean
-			rm a.out
+#			make fclean
+#			rm a.out
 
 re: 		fclean all
 

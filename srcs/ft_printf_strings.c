@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/20 20:52:31 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:00:52 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ static void ft_write_null(int *sol, t_options *flags)
 	int		i;
 	char	*null;
 	
-	i = 1;
+	i = 0;
 	null = "(null)";
 	if (flags->point == 1)
 	{
-		while (i <= flags->precision)
+		while (i < flags->precision)
 		{
-			*sol = *sol + ft_printf_write_char(null[i - 1], 1);
+			*sol = *sol + ft_printf_write_char(null[i], 1);
 			i++;
 		}
 	}
 	else
 	{
-		while (i <= flags->precision)
+		while (null[i] != '\0')
 		{
-			*sol = *sol + ft_printf_write_char(null[i - 1], 1);
+			*sol = *sol + ft_printf_write_char(null[i], 1);
 			i++;
 		}
 	}
@@ -44,7 +44,10 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 
 	j = 0;
 	if (!str)
+	{
 		ft_write_null(sol, flags);
+		return ;
+	}
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->point == 1)
 		len = flags->precision;
@@ -71,7 +74,10 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 
 	j = 0;
 	if (!str)
+	{
 		ft_write_null(sol, flags);
+		return ;
+	}
 	len = ft_printf_strlen(str);
 	if (flags->precision < len && flags->point == 1)
 		len = flags->precision;

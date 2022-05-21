@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/10 19:39:21 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/05/21 19:50:30 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void    ft_var_print_pointer_left(void *ptr, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char('0', 1);
 		*sol = *sol + ft_printf_write_char('x', 1);
 		*sol = *sol + ft_printf_write_char('0', 1);
+		return;
 	}
 	*sol = *sol + ft_printf_write_char('0', 1);
 	*sol = *sol + ft_printf_write_char('x', 1);
