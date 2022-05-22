@@ -36,9 +36,9 @@ void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 	if (flags->plus == 0 && flags->space == 0 && j >=0)
 		k--;
 	ft_printf_write_itoa(j, sol, flags);
-	while (k++ < flags->width && flags->zero == 0)
+	while (k++ <i= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (k++ < flags->width && flags->zero == 1)
+	while (k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
@@ -56,11 +56,11 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 	k = ft_printf_itoa_len(j) + 1;
 	if (flags->plus == 0 && flags->space == 0 && j >= 0)
 		k--;		
-	while (k++ < flags->width && flags->zero == 0)
+	while (k++ <= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ < flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	while (k++ < flags->precision)
+	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
@@ -92,9 +92,9 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	if ((flags->plus == 0 && flags->space == 0) || j == 0)
 		k--;
 	ft_printf_write_itoa_no_sign(j, sol, flags);
-	while (k++ < flags->width && flags->zero == 0)
+	while (k++ <= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (k++ < flags->width && flags->zero == 1)
+	while (k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
@@ -112,9 +112,9 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 	k = ft_printf_itoa_unsigned_len(j) + 1;
 	if ((flags->plus == 0 && flags->space == 0) || j == 0)
 		k--;
-	while (k++ < flags->width && flags->zero == 0)
+	while (k++ <= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (k++ < flags->width && flags->zero == 1)
+	while (k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	k = ft_printf_itoa_unsigned_len(j);
 	if (flags->plus == 1 && j > 0)
