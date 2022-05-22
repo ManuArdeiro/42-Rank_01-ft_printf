@@ -17,7 +17,7 @@ static void	ft_var_print_pointer_right(void *ptr, int *sol, t_options *flags)
 	int		len;
 	int		j;
 
-	if (!ptr)
+	if (!ptr || ptr[0] == '\0')
 	{
 		*sol = *sol + ft_printf_write_char('0', 1);
 		*sol = *sol + ft_printf_write_char('x', 1);
@@ -42,7 +42,7 @@ static void    ft_var_print_pointer_left(void *ptr, int *sol, t_options *flags)
 	int     len;
 	int     j;
 
-	if (!ptr)
+	if (!ptr || ptr[0] == '\0')
 	{
 		*sol = *sol + ft_printf_write_char('0', 1);
 		*sol = *sol + ft_printf_write_char('x', 1);
