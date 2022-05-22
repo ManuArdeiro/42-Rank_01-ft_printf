@@ -58,10 +58,10 @@ void	ft_var_print_hex_right(char c, unsigned int hex, int *sol,
 	k = k + ft_printf_itoa_len_hex(hex);
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (k++ < flags->width && flags->zero == 1)
+	while (k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	k = ft_printf_itoa_len_hex(hex);
-	while (k++ < flags->precision)
+	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	ft_printf_write_itoa_hex(c, hex, sol);
 }
