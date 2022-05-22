@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
+void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 {
 	int		k;
 
@@ -42,7 +42,7 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
+void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 {
 	int		k;
 
@@ -71,7 +71,7 @@ void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 	ft_printf_write_itoa(j, sol, flags);
 }
 
-void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
+void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 {
 	int		k;
 
@@ -98,7 +98,7 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
+void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 {
 	int	k;
 
