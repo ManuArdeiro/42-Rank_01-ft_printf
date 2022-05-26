@@ -69,14 +69,14 @@ test:		$(NAME)
 			$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) main.c
 			@echo "$(MAGENTA) Done..."
 			./a.out
-#			make fclean
-#			rm a.out
+			make fclean
+			rm a.out
 
 bonus_test:	bonus
 			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
 			@echo "$(DARK_GRAY) Done..."
 			./a.out
-#			make fclean
+			make fclean
 #			rm a.out
 
 re: 		fclean all
