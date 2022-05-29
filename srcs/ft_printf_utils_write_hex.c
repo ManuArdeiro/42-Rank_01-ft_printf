@@ -42,7 +42,7 @@ void	ft_printf_write_hex_l(unsigned long int hex_l, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
-	if (len < 0)
+	if (hex_l == 0)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	while (hex_l != 0)
 	{
@@ -72,7 +72,7 @@ void	ft_printf_write_hex_u(unsigned long int hex_u, int *sol, char *digits)
 	}
 	str[len] = '\0';
 	len--;
-	if (len < 0)
+	if (hex_u == 0)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	while (hex_u != 0)
 	{

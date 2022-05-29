@@ -31,7 +31,7 @@ void	ft_var_set_flags(t_options *flags, char c, int *i)
 		flags->zero = 1;
 	if (c == '#')
 		flags->pad = 1;
-	*i = *i +1;
+	*i = *i + 1;
 }
 
 void	ft_var_read_flags(char const *text, int *i, t_options *flags)
@@ -48,6 +48,4 @@ void	ft_var_read_flags(char const *text, int *i, t_options *flags)
 		while (text[*i] >= '0' && text[*i] <= '9')
 			flags->precision = ft_var_set_length(flags->precision, text[*i], i);
 	}
-	else if (text[*i] != '.')
-		flags->precision = -1;
 }

@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
+void	ft_printf_write_itoa(int j, int *sol)
 {
 	int		len;
 	char	*str;
@@ -33,16 +33,12 @@ void	ft_printf_write_itoa(int j, int *sol, t_options *flags)
 		str[--len] = '0' + j % 10;
 		j = (j / 10);
 	}
-	if (flags->point == 1)
-		while (str[len] && len <= flags->precision)
-			*sol = *sol + ft_printf_write_char(str[len++], 1);
-	else if (flags->point == 0)
-		while (str[len])
-			*sol = *sol + ft_printf_write_char(str[len++], 1);
+	while (str[len])
+		*sol = *sol + ft_printf_write_char(str[len++], 1);
 	free(str);
 }
 
-void	ft_printf_write_itoa_no_sign(unsigned int j, int *sol, t_options *flags)
+void	ft_printf_write_itoa_no_sign(unsigned int j, int *sol)
 {
 	int		len;
 	char	*str;
@@ -62,11 +58,7 @@ void	ft_printf_write_itoa_no_sign(unsigned int j, int *sol, t_options *flags)
 		str[--len] = '0' + j % 10;
 		j = (j / 10);
 	}
-	if (flags->point == 1)
-		while (str[len] && len <= flags->precision)
-			*sol = *sol + ft_printf_write_char(str[len++], 1);
-	else if (flags->point == 0)
-		while (str[len])
-			*sol = *sol + ft_printf_write_char(str[len++], 1);
+	while (str[len])
+		*sol = *sol + ft_printf_write_char(str[len++], 1);
 	free(str);
 }

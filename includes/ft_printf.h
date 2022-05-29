@@ -90,9 +90,8 @@ void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
 
 // ft_printf_utils_write_itoa.c
 
-void		ft_printf_write_itoa(int j, int *sol, t_options *flags);
-void    	ft_printf_write_itoa_no_sign(unsigned int j, int *sol, 
-				t_options *flags);
+void		ft_printf_write_itoa(int j, int *sol);
+void    	ft_printf_write_itoa_no_sign(unsigned int j, int *sol);
 		
 // ft_printf_utils_flags_init.c
 t_options	*ft_printf_flags_init(t_options *flags);

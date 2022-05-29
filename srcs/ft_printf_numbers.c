@@ -13,6 +13,7 @@
 #include "../includes/ft_printf.h"
 
 void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
+
 {
 	int		k;
 
@@ -23,23 +24,20 @@ void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 		return ;
 	}
-	k = ft_printf_itoa_len(j);
-	if (flags->plus == 1 && j > 0)
+	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	else if (j < 0)
 		*sol = *sol + ft_printf_write_char('-', 1);
-	while (k++ < flags->precision)
-		*sol = *sol + ft_printf_write_char('0', 1);
-	k--;
-	ft_printf_write_itoa(j, sol, flags);
 	if (j < 0 || flags->plus == 1 || flags->space == 1)
 		k++;
-	while (k++ < flags->width && flags->zero == 0)
+	while (k++ < flags->precision)
+		*sol = *sol + ft_printf_write_char('0', 1);
+	ft_printf_write_itoa(j, sol);
+	while (k++ <= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	k--;
-	while (k++ < flags->width && flags->zero == 1)
+	while (k++ <= (flags->width + 1) && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
@@ -54,24 +52,22 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 		return ;
 	}
-	k = ft_printf_itoa_len(j);
-	if (flags->plus == 1 && j > 0)
+	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	else if (j < 0)
 		*sol = *sol + ft_printf_write_char('-', 1);
 	if (j < 0 || flags->plus == 1 || flags->space == 1)
-		k--;
-	while (k++ < flags->width && flags->zero == 0)
+		k = 1;
+	while (flags->precision +  ft_printf_itoa_len(j) + k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	k--;
-	while (k++ < flags->width && flags->zero == 1)
+	while (flags->precision +  ft_printf_itoa_len(j) + k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	k--;
-	while (k++ < flags->precision)
+	k = ft_printf_itoa_len(j);
+	while (k++ < (flags->precision))
 		*sol = *sol + ft_printf_write_char('0', 1);
-	ft_printf_write_itoa(j, sol, flags);
+	ft_printf_write_itoa(j, sol);
 }
 
 void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
@@ -86,16 +82,16 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 		return ;
 	}
 	k = ft_printf_itoa_unsigned_len(j);
-	if (flags->plus == 1 && j > 0)
+	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	k--;
 	if (flags->plus == 1 || flags->space == 1)
 		k--;
-	ft_printf_write_itoa_no_sign(j, sol, flags);
+	ft_printf_write_itoa_no_sign(j, sol);
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	k--;
@@ -108,6 +104,7 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	int	k;
 
 	k = 0;
+
 	if (j == 0 && flags->precision == 0 && flags->point == 1)
 	{
 		while (k++ < flags->width)
@@ -115,9 +112,9 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 		return ;
 	}
 	k = ft_printf_itoa_unsigned_len(j) + 1;
-	if (flags->plus == 1 && j > 0)
+	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j > 0)
+	else if (flags->space == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	if (flags->plus == 1 || flags->space == 1)
 		k--;
@@ -129,5 +126,5 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	k--;
 	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	ft_printf_write_itoa_no_sign(j, sol, flags);
+	ft_printf_write_itoa_no_sign(j, sol);
 }

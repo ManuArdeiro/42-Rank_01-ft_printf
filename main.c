@@ -16,17 +16,21 @@ int	main(void)
 {
 	int				i;
 	
-	i = ft_printf("%%-2x -> %-2x ", -1);
+	i = ft_printf("%%x -> %x ", 0);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%-2x -> %-2x ", -1);
+	i = printf("%%x -> %x ", 0);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%-13x -> %-13x ", UINT_MAX);
+	i = ft_printf("%%-2p -> %-2p ", 1);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%-13x -> %-13x ", UINT_MAX);
+	i = printf("%%-2p -> %-2d ", 1);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%7s -> %%7s ", 0);
+	i = ft_printf("%%-1X -> %-1X ", UINT_MAX);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%7s -> %%7s ", 0);
+	i = printf("%%-1X -> %-1X ", UINT_MAX);
 	printf("sol printf = %d\n", i);
+	i = ft_printf("%%-2p -> %-2p ", 15);
+	printf("sol printf = %d\n", i);
+	i = ft_printf("%%-2p -> %-2p ", 1);
+	printf("sol ft_printf = %d\n", i);
 	return (0);
 }
