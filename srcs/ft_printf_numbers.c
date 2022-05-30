@@ -82,9 +82,9 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 		return ;
 	}
 	k = ft_printf_itoa_unsigned_len(j);
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
+	else if (flags->space == 1)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
@@ -112,9 +112,9 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 		return ;
 	}
 	k = ft_printf_itoa_unsigned_len(j) + 1;
-	if (flags->plus == 1 && j >= 0)
+	if (flags->plus == 1)
 		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
+	else if (flags->space == 1)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	if (flags->plus == 1 || flags->space == 1)
 		k--;
