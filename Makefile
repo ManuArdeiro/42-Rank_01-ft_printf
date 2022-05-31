@@ -44,11 +44,11 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC) -g3
 all: $(NAME)
 
 $(NAME):	$(OBJS) $(MAIN_OBJS)
-			@echo "$(YELLOW) Creating library... $(WHITE)"
+			echo "$(YELLOW) Creating library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(MAIN_OBJS)
 			
 bonus:		fclean $(OBJS) $(BONUS_OBJS)
-			@echo "$(YELLOW) Creating bonus library... $(WHITE)"
+			echo "$(YELLOW) Creating bonus library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
 			@echo "$(GREEN) Done..."			

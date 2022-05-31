@@ -55,10 +55,10 @@ static void    ft_var_print_pointer_left(void *ptr, int *sol, t_options *flags)
 	len = ft_printf_itoa_len_hex((unsigned long int)ptr);
 	j = 0;
 	if (flags->width > len && flags->zero == 0)
-		while (j++ < flags->width - len)
+		while (j++ < flags->width - len - 2)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 	if (flags->width > len && flags->zero == 1)
-		while (j++ < flags->width - len)
+		while (j++ < flags->width - len - 2)
 			*sol = *sol + ft_printf_write_char('0', 1);
 }
 

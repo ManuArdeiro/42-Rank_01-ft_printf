@@ -12,19 +12,19 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_var_print_hex_left(char c, unsigned int hex, int *sol,
+void	ft_var_print_hex_left(char c, long int hex, int *sol,
 	   t_options *flags)
 {
 	int	k;
 
 	if (hex == 0 && flags->precision == 0 && flags->point == 1)
 		return ;
-	k = ft_printf_itoa_len_hex(hex);
+	k = ft_printf_itoa_len_hex((unsigned long int)hex);
 	if (flags->plus == 1)
 		*sol = *sol + ft_printf_write_char('+', 1);
 	else if (flags->space == 1)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	if (flags->pad == 1)
+	if (flags->pad == 1 && hex != 0)
 	{
 		*sol = *sol + ft_printf_write_char('0', 1);
 		*sol = *sol + ft_printf_write_char(c, 1);
@@ -40,7 +40,7 @@ void	ft_var_print_hex_left(char c, unsigned int hex, int *sol,
 		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_hex_right(char c, unsigned int hex, int *sol,
+void	ft_var_print_hex_right(char c, long int hex, int *sol,
 		t_options *flags)
 {
 	int	k;
@@ -54,18 +54,17 @@ void	ft_var_print_hex_right(char c, unsigned int hex, int *sol,
 		*sol = *sol + ft_printf_write_char(' ', 1);	
 	if (flags->plus == 1 || flags->space == 1)
 		k = 1;
-	if (flags->pad == 1)
+	if (flags->pad == 1 && hex != 0)
 	{
 		*sol = *sol + ft_printf_write_char('0', 1);
 		*sol = *sol + ft_printf_write_char(c, 1);
 	}
-	k = k + ft_printf_itoa_len_hex(hex);
+	k = k + ft_printf_itoa_len_hex((unsigned long int)hex);
 	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	k--;
 	while (k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	k--;
+	k = k - 2;
 	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
 	ft_printf_write_itoa_hex(c, hex, sol);

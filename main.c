@@ -16,21 +16,25 @@ int	main(void)
 {
 	int				i;
 	
-	i = ft_printf("%%x -> %x ", 0);
+	i = ft_printf("%%p %%p -> %p %p ", ULONG_MAX, -ULONG_MAX);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%x -> %x ", 0);
+	i = printf("%%p %%p -> %p %p ", (void *)ULONG_MAX, (void *)-ULONG_MAX);
 	printf("sol printf = %d\n", i);
 	i = ft_printf("%%-2p -> %-2p ", 1);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%-2p -> %-2d ", 1);
+	i = printf("%%-2p -> %-2p ", (void *)1);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%-1X -> %-1X ", UINT_MAX);
+	i = ft_printf("%%-2p -> %-2p ", 12);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%-1X -> %-1X ", UINT_MAX);
+	i = printf("%%-2p -> %-2p ", (void *)12);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%-2p -> %-2p ", 15);
+	i = ft_printf("%%.2x -> %.2x ", 1);
 	printf("sol printf = %d\n", i);
-	i = ft_printf("%%-2p -> %-2p ", 1);
+	i = ft_printf("%%.2x -> %.2x ", 1);
+	printf("sol ft_printf = %d\n", i);
+	i = ft_printf("%%.5x -> %.5x ", 16);
+	printf("sol printf = %d\n", i);
+	i = ft_printf("%%.5x -> %.5x ", 16);
 	printf("sol ft_printf = %d\n", i);
 	return (0);
 }

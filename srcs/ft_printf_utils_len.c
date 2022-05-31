@@ -44,11 +44,11 @@ int	ft_printf_itoa_len(int j)
 int	ft_printf_itoa_len_hex(unsigned long int hex)
 {
 	int	len;
+	int	i;
 
-	if (hex == 0)
-		return (1);
 	len = 0;
-	while (hex > 0)
+	i = 0;
+	while (hex != 0)
 	{
 		hex = hex / 16;
 		len++;
