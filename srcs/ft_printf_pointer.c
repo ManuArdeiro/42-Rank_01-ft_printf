@@ -12,6 +12,30 @@
 
 #include "../includes/ft_printf.h"
 
+static void    ft_var_print_pointer_null(int *sol, t_options *flags)
+{
+	int	i;
+	
+	i = 3;
+	if (flags->minus == 1)	
+	{
+		*sol = *sol + write(1, "0x0", 3);
+		while (i++ < flags->width && flags->zero == 0) 
+			*sol = *sol + ft_printf_write_char(' ', 1);
+		while (i++ < flags->width && flags->zero == 1) 
+			*sol = *sol + ft_printf_write_char('0', 1);
+	}
+	if (flags->minus == 0)	
+	{
+		while (i++ < flags->width && flags->zero == 0) 
+			*sol = *sol + ft_printf_write_char(' ', 1);
+		while (i++ < flags->width && flags->zero == 1) 
+			*sol = *sol + ft_printf_write_char('0', 1);
+		*sol = *sol + write(1, "0x0", 3);
+	}
+	return;
+}
+
 static void	ft_var_print_pointer_right(void *ptr, int *sol, t_options *flags)
 {
 	int		len;
@@ -19,9 +43,7 @@ static void	ft_var_print_pointer_right(void *ptr, int *sol, t_options *flags)
 
 	if (!ptr)
 	{
-		*sol = *sol + ft_printf_write_char('0', 1);
-		*sol = *sol + ft_printf_write_char('x', 1);
-		*sol = *sol + ft_printf_write_char('0', 1);
+		ft_var_print_pointer_null(sol, flags);
 		return ;
 	}
 	len = ft_printf_itoa_len_hex((unsigned long int)ptr);
@@ -44,10 +66,8 @@ static void    ft_var_print_pointer_left(void *ptr, int *sol, t_options *flags)
 
 	if (!ptr)
 	{
-		*sol = *sol + ft_printf_write_char('0', 1);
-		*sol = *sol + ft_printf_write_char('x', 1);
-		*sol = *sol + ft_printf_write_char('0', 1);
-		return;
+		ft_var_print_pointer_null(sol, flags);
+		return ;
 	}
 	*sol = *sol + ft_printf_write_char('0', 1);
 	*sol = *sol + ft_printf_write_char('x', 1);
