@@ -64,6 +64,9 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 		k = 1;
 	while (ft_precision(j, flags) + k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
+	while (ft_precision(j, flags) + k++ <= flags->width && flags->point == 1)
+		*sol = *sol + ft_printf_write_char(' ', 1);
+		k--;
 	if (flags->plus == 1 && j >= 0)
 		*sol = *sol + ft_printf_write_char('+', 1);
 	else if (flags->space == 1 && j >= 0)
@@ -72,8 +75,6 @@ void	ft_var_print_nbr_right(int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char('-', 1);
 	while (ft_precision(j, flags) + k++ <= flags->width && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	k = k -2;
-
 	k = ft_printf_itoa_len(j);
 	while (k++ < (flags->precision))
 		*sol = *sol + ft_printf_write_char('0', 1);
@@ -125,6 +126,9 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	while (k++ <= flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	k--;
+	while (k++ <= flags->width && flags->point == 1)
+		*sol = *sol + ft_printf_write_char(' ', 1);
+		k--;
 	if (flags->plus == 1)
 		*sol = *sol + ft_printf_write_char('+', 1);
 	else if (flags->space == 1)
