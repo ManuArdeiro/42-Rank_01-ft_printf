@@ -18,7 +18,7 @@ int	main(void)
 	
 	i = ft_printf("%%x %%x -> %x %x\n", LONG_MAX, LONG_MIN);
 	printf("sol ft_printf = %d\n", i);
-	i = printf("%%x %%x -> %lx %lx\n", ULONG_MAX, -ULONG_MAX);
+	i = printf("%%x %%x -> %x %x\n", (unsigned int)LONG_MAX, (unsigned int)LONG_MIN);
 	printf("sol printf = %d\n", i);
 	i = ft_printf("%%x -> %x\n", 9223372036854775807LL);
 	printf("sol ft_printf = %d\n", i);

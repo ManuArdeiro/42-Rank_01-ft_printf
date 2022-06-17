@@ -113,6 +113,7 @@ void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 {
 	int	k;
+	 
 	k = 0;
 	if (j == 0 && flags->precision == 0 && flags->point == 1)
 	{
@@ -123,11 +124,15 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 	k = ft_printf_itoa_unsigned_len(j) + 1;
 	if (flags->plus == 1 || flags->space == 1)
 		k--;
-	while (k++ <= flags->width && flags->zero == 0)
+	if (flags->precision > ft_printf_itoa_unsigned_len(j))
+		flags->width = flags->width - flags->precision + k - 1;
+	while (k++ <= flags->width && (flags->zero == 0 || flags->point == 1))
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	k--;
-	while (k++ <= flags->width && flags->point == 1)
-		*sol = *sol + ft_printf_write_char(' ', 1);
+	while (k++ <= flags->width && flags->point == 0 && flags->zero == 1)
+		*sol = *sol + ft_printf_write_char('0', 1);
+	k = ft_printf_itoa_unsigned_len(j) + 1;
+	if (flags->plus == 1 || flags->space == 1)
 		k--;
 	if (flags->plus == 1)
 		*sol = *sol + ft_printf_write_char('+', 1);
@@ -135,9 +140,5 @@ void	ft_var_print_unsigned_right(unsigned int j, int *sol, t_options *flags)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	k--;
-	while (k++ <= flags->width && flags->zero == 1)
-		*sol = *sol + ft_printf_write_char('0', 1);
-	k--;
 	ft_printf_write_itoa_no_sign(j, sol);
 }

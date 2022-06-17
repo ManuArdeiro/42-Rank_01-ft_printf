@@ -70,9 +70,9 @@ void		ft_var_print_pointer(void *ptr, int *sol, t_options *flags);
 
 // ft_printf_hex.c
 
-void		ft_var_print_hex_left(char c, long int hex, int *sol,
+void		ft_var_print_hex_left(char c, unsigned int hex, int *sol,
 				t_options *flags);
-void		ft_var_print_hex_right(char c, long int hex, int *sol,
+void		ft_var_print_hex_right(char c, unsigned int hex, int *sol,
 				t_options *flags);
 
 // ft_printf_utils_len.c
