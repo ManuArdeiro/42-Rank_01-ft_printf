@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/24 18:18:05 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:52:03 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	ft_var_print_main(char c, va_list args, int *sol, t_options *flags)
 	else if (c == 's' && flags->minus == 1)
 		ft_var_print_str_left(va_arg(args, char *), sol, flags);
 	else if (c == 's' && flags->minus == 0)
-		ft_var_print_str_right(va_arg(args, char *), sol, flags);
+		ft_var_print_str_right_1(va_arg(args, char *), sol, flags);
 	else if (c == 'p')
 		ft_var_print_pointer(va_arg(args, void *), sol, flags);
 	else if ((c == 'd' || c == 'i') && flags->minus == 1)
 		ft_var_print_nbr_left(va_arg(args, int), sol, flags);
 	else if ((c == 'd' || c == 'i') && flags->minus == 0)
-		ft_var_print_nbr_right(va_arg(args, int), sol, flags);
+		ft_var_print_nbr_right_1(va_arg(args, int), sol, flags);
 	else if (c == 'u' && flags->minus == 1)
 		ft_var_print_unsigned_left(va_arg(args, unsigned int), sol, flags);
 	else if (c == 'u' && flags->minus == 0)
-		ft_var_print_unsigned_right(va_arg(args, unsigned int), sol, flags);
+		ft_var_print_unsigned_right_1(va_arg(args, unsigned int), sol, flags);
 	else if ((c == 'x' || c == 'X') && flags->minus == 1)
-		ft_var_print_hex_left(c, va_arg(args, unsigned int), sol, flags);
+		ft_var_print_hex_left_1(c, va_arg(args, unsigned int), sol, flags);
 	else if ((c == 'x' || c == 'X') && flags->minus == 0)
-		ft_var_print_hex_right(c, va_arg(args, unsigned int), sol, flags);
+		ft_var_print_hex_right_1(c, va_arg(args, unsigned int), sol, flags);
 	else
 		*sol = -1;
 }

@@ -6,19 +6,11 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:48:12 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/26 17:13:04 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:52:22 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-static int	ft_precision(int j, t_options *flags)
-{
-	if (flags->precision > ft_printf_itoa_len(j))
-		return (flags->precision);
-	else
-		return (ft_printf_itoa_len(j));
-}
 
 void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 {

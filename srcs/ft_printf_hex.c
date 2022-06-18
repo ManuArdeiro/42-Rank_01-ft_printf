@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:47:44 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/24 21:28:09 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:51:02 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	ft_var_print_hex_right_2(char c, unsigned int hex, int *sol,
 {	
 	int	k;
 
+	k = ft_printf_itoa_len_hex((unsigned int)hex);
 	if (flags->plus == 1 || flags->space == 1)
-		k = 1;
-	k = k + ft_printf_itoa_len_hex((unsigned int)hex);
+		k++;
 	if (flags->precision > ft_printf_itoa_len_hex(hex))
 		flags->width = flags->width - flags->precision + k;
 	while (k++ < flags->width && (flags->zero == 0 || flags->point == 1))

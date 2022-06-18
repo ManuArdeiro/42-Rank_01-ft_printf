@@ -6,7 +6,7 @@
 #    By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 21:33:28 by jolopez-          #+#    #+#              #
-#    Updated: 2022/05/21 19:49:42 by jolopez-         ###   ########.fr        #
+#    Updated: 2022/06/18 14:49:48 by jolopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME 		= libftprintf.a
 SRCS 		= srcs/ft_printf_manage_flags.c \
 			srcs/ft_printf_select_var.c \
 			srcs/ft_printf_numbers.c \
+			srcs/ft_printf_unsigned.c \
 			srcs/ft_printf_chars.c \
 			srcs/ft_printf_strings.c \
 		   	srcs/ft_printf_pointer.c \
@@ -44,13 +45,12 @@ CFLAGS = 	-Wall -Werror -Wextra -I$(INC) -g3
 all: $(NAME)
 
 $(NAME):	$(OBJS) $(MAIN_OBJS)
-			echo "$(YELLOW) Creating library... $(WHITE)"
+			@echo "$(YELLOW) Creating library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(MAIN_OBJS)
 			
 bonus:		fclean $(OBJS) $(BONUS_OBJS)
-			echo "$(YELLOW) Creating bonus library... $(WHITE)"
+			@echo "$(YELLOW) Creating bonus library... $(WHITE)"
 			ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
 			@echo "$(GREEN) Done..."			
 
 clean:

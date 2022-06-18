@@ -6,7 +6,7 @@
 /*   By: jolopez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:17:39 by jolopez-          #+#    #+#             */
-/*   Updated: 2022/05/10 20:17:14 by jolopez-         ###   ########.fr       */
+/*   Updated: 2022/06/18 14:50:17 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int			ft_printf_itoa_len(int j);
 int			ft_printf_itoa_len_hex(unsigned long int hex);
 int			ft_printf_itoa_unsigned_len(unsigned int j);
 
+void		ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol);
 void		ft_printf_write_hex_l(unsigned long int hex_l, int *sol,
 				char *digits);
 void		ft_printf_write_hex_u(unsigned long int hex_u, int *sol,
