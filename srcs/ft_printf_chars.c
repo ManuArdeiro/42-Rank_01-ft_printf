@@ -34,7 +34,7 @@ void	ft_var_print_chr_left(int c, int *sol, t_options *flags)
 void	ft_var_print_chr_right(int c, int *sol, t_options *flags)
 {
 	int	j;
-	
+
 	j = 1;
 	while (j < flags->width)
 	{

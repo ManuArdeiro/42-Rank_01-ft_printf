@@ -12,18 +12,18 @@
 
 #include "../includes/ft_printf.h"
 
-static void ft_write_null(int *sol, t_options *flags)
+static void	ft_write_null(int *sol, t_options *flags)
 {
 	int		i;
 	char	*null;
-	
+
 	i = 0;
 	null = "(null)";
-	if (flags->width > 6  && flags->zero == 1)
+	if (flags->width > 6 && flags->zero == 1)
 		while (i++ < flags->width - 6)
 			*sol = *sol + ft_printf_write_char('0', 1);
 	i = 0;
-	if (flags->width > 6  && flags->zero == 0)
+	if (flags->width > 6 && flags->zero == 0)
 		while (i++ < flags->width - 6)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 	i = 0;
@@ -68,7 +68,7 @@ void	ft_var_print_str_left(char *str, int *sol, t_options *flags)
 	}
 }
 
-void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
+void	ft_var_print_str_right_1(char *str, int *sol, t_options *flags)
 {
 	int	len;
 	int	j;
@@ -93,6 +93,11 @@ void	ft_var_print_str_right(char *str, int *sol, t_options *flags)
 				*sol = *sol + ft_printf_write_char('0', 1);
 		j = 0;
 	}
+	ft_var_print_str_right_2(str, sol, len, j);
+}
+
+void	ft_var_print_str_right_2(char *str, int *sol, int len, int j)
+{
 	while (j < len)
 	{
 		*sol = *sol + ft_printf_write_char(str[j], 1);

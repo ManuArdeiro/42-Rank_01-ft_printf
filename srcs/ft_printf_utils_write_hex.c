@@ -12,7 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-
 void	ft_printf_write_itoa_hex(char c, unsigned long int hex, int *sol)
 {
 	char	*hex_digits_l;
@@ -40,7 +39,7 @@ void	ft_printf_write_hex_l(unsigned long int hex_l, int *sol, char *digits)
 		return ;
 	}
 	str[len] = '\0';
-	if (hex_l == 0) 
+	if (hex_l == 0)
 		str[0] = '0';
 	while (hex_l != 0)
 	{
@@ -69,7 +68,7 @@ void	ft_printf_write_hex_u(unsigned long int hex_u, int *sol, char *digits)
 		return ;
 	}
 	str[len] = '\0';
-	if (hex_u == 0) 
+	if (hex_u == 0)
 		str[0] = '0';
 	while (hex_u != 0)
 	{

@@ -65,20 +65,6 @@ fclean: 	clean mclean
 			@echo "$(LIGHT_RED) Cleaning objects and library... $(WHITE)"
 			/bin/rm -rf $(NAME)
 
-test:		$(NAME)
-			$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) main.c
-			@echo "$(MAGENTA) Done..."
-			./a.out
-			make fclean
-			rm a.out
-
-bonus_test:	bonus
-			$(CC) $(CFLAGS) $(OBJS) $(BONUS_OBJS) main.c
-			@echo "$(DARK_GRAY) Done..."
-			./a.out
-			make fclean
-#			rm a.out
-
 re: 		fclean all
 
 .PHONY: 	all clean fclean re test mclean bonus

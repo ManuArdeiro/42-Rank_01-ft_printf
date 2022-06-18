@@ -20,36 +20,7 @@ static int	ft_precision(int j, t_options *flags)
 		return (ft_printf_itoa_len(j));
 }
 
-void	ft_var_print_nbr_left(int j, int *sol, t_options *flags)
-
-{
-	int		k;
-
-	k = ft_printf_itoa_len(j);
-	if (j == 0 && flags->precision == 0 && flags->point == 1)
-	{
-		while (k++ <= flags->width)
-			*sol = *sol + ft_printf_write_char(' ', 1);
-		return ;
-	}
-	if (flags->plus == 1 && j >= 0)
-		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
-		*sol = *sol + ft_printf_write_char(' ', 1);
-	else if (j < 0)
-		*sol = *sol + ft_printf_write_char('-', 1);
-	while (k++ < flags->precision)
-		*sol = *sol + ft_printf_write_char('0', 1);
-	if (j < 0 || flags->plus == 1 || flags->space == 1)
-		k++;
-	ft_printf_write_itoa(j, sol);
-	while (k++ <= flags->width && flags->zero == 0)
-		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (k++ <= (flags->width + 1) && flags->zero == 1)
-		*sol = *sol + ft_printf_write_char('0', 1);
-}
-
-void	ft_var_print_nbr_right_1(int j, int *sol, t_options *flags)
+void	ft_var_print_unsigned_left(unsigned int j, int *sol, t_options *flags)
 {
 	int		k;
 
@@ -60,28 +31,60 @@ void	ft_var_print_nbr_right_1(int j, int *sol, t_options *flags)
 			*sol = *sol + ft_printf_write_char(' ', 1);
 		return ;
 	}
-	if (j < 0 || flags->plus == 1 || flags->space == 1)
-		k = 1;
-	while (ft_precision(j, flags) + k++ < flags->width && flags->zero == 0)
+	k = ft_printf_itoa_unsigned_len(j);
+	if (flags->plus == 1)
+		*sol = *sol + ft_printf_write_char('+', 1);
+	else if (flags->space == 1)
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	while (ft_precision(j, flags) + k++ <= flags->width && flags->point == 1)
+	while (k++ < flags->precision)
+		*sol = *sol + ft_printf_write_char('0', 1);
+	k--;
+	if (flags->plus == 1 || flags->space == 1)
+		k--;
+	ft_printf_write_itoa_no_sign(j, sol);
+	while (k++ < flags->width && flags->zero == 0)
 		*sol = *sol + ft_printf_write_char(' ', 1);
 	k--;
-	ft_var_print_nbr_right_2(j, sol, flags, k);
+	while (k++ < flags->width && flags->zero == 1)
+		*sol = *sol + ft_printf_write_char('0', 1);
 }
 
-void	ft_var_print_nbr_right_2(int j, int *sol, t_options *flags, int k)
+void	ft_var_print_unsigned_right_1(unsigned int j, int *sol,
+		t_options *flags)
 {
-	if (flags->plus == 1 && j >= 0)
-		*sol = *sol + ft_printf_write_char('+', 1);
-	else if (flags->space == 1 && j >= 0)
+	int	k;
+
+	k = 0;
+	if (j == 0 && flags->precision == 0 && flags->point == 1)
+	{
+		while (k++ < flags->width)
+			*sol = *sol + ft_printf_write_char(' ', 1);
+		return ;
+	}
+	k = ft_printf_itoa_unsigned_len(j) + 1;
+	if (flags->plus == 1 || flags->space == 1)
+		k--;
+	if (flags->precision > ft_printf_itoa_unsigned_len(j))
+		flags->width = flags->width - flags->precision + k - 1;
+	while (k++ <= flags->width && (flags->zero == 0 || flags->point == 1))
 		*sol = *sol + ft_printf_write_char(' ', 1);
-	else if (j < 0)
-		*sol = *sol + ft_printf_write_char('-', 1);
-	while (ft_precision(j, flags) + k++ <= flags->width && flags->zero == 1)
+	k--;
+	ft_var_print_unsigned_right_2(j, sol, flags, k);
+}
+
+void	ft_var_print_unsigned_right_2(unsigned int j, int *sol,
+		t_options *flags, int k)
+{
+	while (k++ <= flags->width && flags->point == 0 && flags->zero == 1)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	k = ft_printf_itoa_len(j);
-	while (k++ < (flags->precision))
+	k = ft_printf_itoa_unsigned_len(j) + 1;
+	if (flags->plus == 1 || flags->space == 1)
+		k--;
+	if (flags->plus == 1)
+		*sol = *sol + ft_printf_write_char('+', 1);
+	else if (flags->space == 1)
+		*sol = *sol + ft_printf_write_char(' ', 1);
+	while (k++ <= flags->precision)
 		*sol = *sol + ft_printf_write_char('0', 1);
-	ft_printf_write_itoa(j, sol);
+	ft_printf_write_itoa_no_sign(j, sol);
 }
